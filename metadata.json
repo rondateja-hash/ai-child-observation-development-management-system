@@ -1,0 +1,6 @@
+{
+  "name": "AI Child Observation & Development Management System",
+  "description": "A premium child observation and milestone development tracking system for FirstCry Intellitots, featuring server-side Gemini-powered professional report generation.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

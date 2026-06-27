@@ -116,7 +116,7 @@ async function startServer(port = Number(process.env.PORT) || 3e3) {
     });
   });
   app.post("/api/auth/register", (req, res) => {
-    const { name, email, password, phone, gender } = req.body;
+    const { name, email, password, phone, gender, role, classroomId } = req.body;
     if (!name || !email || !password) {
       res.status(400).json({ error: "Name, email, and password are required." });
       return;
@@ -125,42 +125,48 @@ async function startServer(port = Number(process.env.PORT) || 3e3) {
       res.status(400).json({ error: "Email address is already registered." });
       return;
     }
+    const userRole = (role === "Teacher" || role === "Parent") ? role : "Parent";
     const newUser = {
       id: "usr-" + crypto.randomBytes(6).toString("hex"),
       email: email.trim(),
       passwordHash: password,
-      // For simplicity we store plain text or simple hash support
       name: name.trim(),
-      role: "Parent",
+      role: userRole,
       phone: phone || "",
       active: true,
       gender: gender || "",
+      classroomId: userRole === "Teacher" ? (classroomId || "cls-prep") : "",
       avatar: gender === "Female"
         ? "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150"
         : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150"
     };
     db.addUser(newUser);
-    const children = db.getChildren();
+    
     let matchCount = 0;
-    children.forEach((c) => {
-      const emailMatches = c.parentEmail && c.parentEmail.trim().toLowerCase() === email.trim().toLowerCase();
-      const phoneMatches = phone && c.parentPhone && c.parentPhone.replace(/\D/g, "") === phone.replace(/\D/g, "");
-      if (emailMatches || phoneMatches) {
-        c.parentName = name.trim();
-        if (phone) c.parentPhone = phone;
-        c.parentEmail = email.trim();
-        matchCount++;
+    if (userRole === "Parent") {
+      const children = db.getChildren();
+      children.forEach((c) => {
+        const emailMatches = c.parentEmail && c.parentEmail.trim().toLowerCase() === email.trim().toLowerCase();
+        const phoneMatches = phone && c.parentPhone && c.parentPhone.replace(/\D/g, "") === phone.replace(/\D/g, "");
+        if (emailMatches || phoneMatches) {
+          c.parentName = name.trim();
+          if (phone) c.parentPhone = phone;
+          c.parentEmail = email.trim();
+          matchCount++;
+        }
+      });
+      if (matchCount > 0) {
+        db.save();
       }
-    });
-    if (matchCount > 0) {
-      db.save();
     }
     db.addActivityLog({
       id: "act-" + crypto.randomUUID(),
       userId: newUser.id,
       userName: newUser.name,
       action: "Register",
-      details: `New parent registered: ${name} (${email}). Linked to ${matchCount} students.`,
+      details: userRole === "Teacher" 
+        ? `New teacher registered: ${name} (${email}) for classroom ${newUser.classroomId}.` 
+        : `New parent registered: ${name} (${email}). Linked to ${matchCount} students.`,
       timestamp: (/* @__PURE__ */ new Date()).toISOString()
     });
     const token = Buffer.from(`${newUser.id}|${newUser.email}|${newUser.name}|${newUser.role}|${newUser.classroomId || ""}`).toString("base64");

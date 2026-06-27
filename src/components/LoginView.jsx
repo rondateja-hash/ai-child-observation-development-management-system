@@ -16,6 +16,8 @@ export default function LoginView({ onLoginSuccess, addToast }) {
     const [regPassword, setRegPassword] = useState("");
     const [regPhone, setRegPhone] = useState("");
     const [regGender, setRegGender] = useState("Female");
+    const [regRole, setRegRole] = useState("Parent");
+    const [regClassroom, setRegClassroom] = useState("cls-prep");
     
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
@@ -56,7 +58,9 @@ export default function LoginView({ onLoginSuccess, addToast }) {
                 email: regEmail,
                 passwordHash: regPassword,
                 phone: regPhone,
-                gender: regGender
+                gender: regGender,
+                role: regRole,
+                classroomId: regRole === "Teacher" ? regClassroom : ""
             });
             addToast("Account Created!", `Successfully registered and logged in as ${data.user.name}`, "success");
             onLoginSuccess(data.user);
@@ -275,9 +279,40 @@ export default function LoginView({ onLoginSuccess, addToast }) {
                                         placeholder="••••••••"
                                     />
                                 </div>
+                                <div className="grid grid-cols-2 gap-3">
+                                <div>
+                                    <label htmlFor="reg-role" className="block text-xs font-semibold text-slate-600 mb-1">
+                                        Account Type *
+                                    </label>
+                                    <select 
+                                        id="reg-role" 
+                                        value={regRole} 
+                                        onChange={(e) => setRegRole(e.target.value)} 
+                                        className="block w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-2xl text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all text-xs font-sans cursor-pointer"
+                                    >
+                                        <option value="Parent">Parent</option>
+                                        <option value="Teacher">Teacher</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label htmlFor="reg-gender" className="block text-xs font-semibold text-slate-600 mb-1">
+                                        Gender *
+                                    </label>
+                                    <select 
+                                        id="reg-gender" 
+                                        value={regGender} 
+                                        onChange={(e) => setRegGender(e.target.value)} 
+                                        className="block w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-2xl text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all text-xs font-sans cursor-pointer"
+                                    >
+                                        <option value="Female">Female</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
                             </div>
 
-                            <div className="grid grid-cols-2 gap-3">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                                 <div>
                                     <label htmlFor="reg-phone" className="block text-xs font-semibold text-slate-600 mb-1">
                                         Contact Phone
@@ -297,22 +332,24 @@ export default function LoginView({ onLoginSuccess, addToast }) {
                                     </div>
                                 </div>
 
-                                <div>
-                                    <label htmlFor="reg-gender" className="block text-xs font-semibold text-slate-600 mb-1">
-                                        Gender
-                                    </label>
-                                    <select 
-                                        id="reg-gender" 
-                                        value={regGender} 
-                                        onChange={(e) => setRegGender(e.target.value)} 
-                                        className="block w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-2xl text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all text-xs font-sans cursor-pointer"
-                                    >
-                                        <option value="Female">Female</option>
-                                        <option value="Male">Male</option>
-                                        <option value="Other">Other</option>
-                                    </select>
-                                </div>
-                            </div>
+                                {regRole === "Teacher" && (
+                                    <div>
+                                        <label htmlFor="reg-classroom" className="block text-xs font-semibold text-slate-600 mb-1">
+                                            Assign Classroom *
+                                        </label>
+                                        <select 
+                                            id="reg-classroom" 
+                                            value={regClassroom} 
+                                            onChange={(e) => setRegClassroom(e.target.value)} 
+                                            className="block w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-2xl text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all text-xs font-sans cursor-pointer"
+                                        >
+                                            <option value="cls-toddlers">Toddlers</option>
+                                            <option value="cls-nursery">Nursery</option>
+                                            <option value="cls-prep">Kindergarten (Prep)</option>
+                                        </select>
+                                    </div>
+                                )}
+                            </div>                          </div>
                         </div>
 
                         <div className="pt-4">

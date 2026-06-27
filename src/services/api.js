@@ -50,15 +50,17 @@ export const api = {
         setAuthToken(data.token);
         return data;
     },
-    register: async (parentData) => {
+    register: async (userData) => {
         const data = await fetchAPI("/auth/register", {
             method: "POST",
             body: JSON.stringify({
-                name: parentData.name,
-                email: parentData.email,
-                password: parentData.passwordHash, // Server endpoint expects "password"
-                phone: parentData.phone,
-                gender: parentData.gender
+                name: userData.name,
+                email: userData.email,
+                password: userData.passwordHash,
+                phone: userData.phone,
+                gender: userData.gender,
+                role: userData.role,
+                classroomId: userData.classroomId
             }),
         });
         if (data.token) {

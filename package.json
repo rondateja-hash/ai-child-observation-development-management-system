@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "node node_modules/tsx/dist/cli.mjs server.jsx",
-    "build": "node node_modules/vite/bin/vite.js build && node -e \"require('esbuild').buildSync({ entryPoints: ['server.jsx'], bundle: true, platform: 'node', format: 'cjs', packages: 'external', sourcemap: true, outfile: 'dist/server.cjs' })\"",
+    "dev": "node node_modules/tsx/dist/cli.mjs server.js",
+    "build": "node node_modules/vite/bin/vite.js build && node -e \"require('esbuild').buildSync({ entryPoints: ['server.js'], bundle: true, platform: 'node', format: 'cjs', packages: 'external', sourcemap: true, outfile: 'dist/server.cjs' })\"",
     "start": "node dist/server.cjs",
     "clean": "node -e \"const fs = require('fs'); fs.rmSync('dist', { recursive: true, force: true })\"",
     "lint": "echo \"Frontend lint skipped in JavaScript mode\""

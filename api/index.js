@@ -1,4 +1,4 @@
-import { startServer } from "../server.jsx";
+import { startServer } from "../server.js";
 
 let appPromise = null;
 

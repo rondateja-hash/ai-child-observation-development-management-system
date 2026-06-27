@@ -3,8 +3,8 @@ import express from "express";
 import path from "path";
 import crypto from "crypto";
 import { createServer as createViteServer } from "vite";
-import { Database } from "./src/backend/db";
-import { generateAIReportFromObservation } from "./src/backend/gemini";
+import { Database } from "./src/backend/db.js";
+import { generateAIReportFromObservation } from "./src/backend/gemini.js";
 const db = new Database();
 const activeSessions = /* @__PURE__ */ new Map();
 async function startServer(port = Number(process.env.PORT) || 3e3) {

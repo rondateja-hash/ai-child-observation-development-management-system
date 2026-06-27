@@ -16,22 +16,31 @@ async function startServer(port = Number(process.env.PORT) || 3e3) {
       return;
     }
     const token = authHeader.split(" ")[1];
-    let userId = activeSessions.get(token);
-    if (!userId) {
-      try {
-        const decoded = Buffer.from(token, "base64").toString("utf-8");
-        if (decoded && decoded.startsWith("usr-")) {
-          userId = decoded;
-        }
-      } catch (e) {
-        // Ignore parsing errors
+    let userDetails = null;
+    try {
+      const decoded = Buffer.from(token, "base64").toString("utf-8");
+      const parts = decoded.split("|");
+      if (parts.length >= 4 && parts[0].startsWith("usr-")) {
+        userDetails = {
+          id: parts[0],
+          email: parts[1],
+          name: parts[2],
+          role: parts[3],
+          classroomId: parts[4] || "",
+          active: true
+        };
       }
+    } catch (e) {
+      // Ignore parsing errors
     }
-    if (!userId) {
+    if (!userDetails) {
       res.status(401).json({ error: "Session expired or invalid. Please login again." });
       return;
     }
-    const user = db.getUsers().find((u) => u.id === userId);
+    let user = db.getUsers().find((u) => u.id === userDetails.id);
+    if (!user) {
+      user = userDetails;
+    }
     if (!user || !user.active) {
       res.status(401).json({ error: "User is deactivated or deleted." });
       return;
@@ -83,7 +92,7 @@ async function startServer(port = Number(process.env.PORT) || 3e3) {
       res.status(401).json({ error: "Invalid email or password credentials" });
       return;
     }
-    const token = Buffer.from(user.id).toString("base64");
+    const token = Buffer.from(`${user.id}|${user.email}|${user.name}|${user.role}|${user.classroomId || ""}`).toString("base64");
     activeSessions.set(token, user.id);
     db.addActivityLog({
       id: "act-" + crypto.randomUUID(),
@@ -154,7 +163,7 @@ async function startServer(port = Number(process.env.PORT) || 3e3) {
       details: `New parent registered: ${name} (${email}). Linked to ${matchCount} students.`,
       timestamp: (/* @__PURE__ */ new Date()).toISOString()
     });
-    const token = Buffer.from(newUser.id).toString("base64");
+    const token = Buffer.from(`${newUser.id}|${newUser.email}|${newUser.name}|${newUser.role}|${newUser.classroomId || ""}`).toString("base64");
     activeSessions.set(token, newUser.id);
     res.status(201).json({
       success: true,
@@ -219,7 +228,7 @@ async function startServer(port = Number(process.env.PORT) || 3e3) {
         res.status(404).json({ error: "Teacher profile not found." });
         return;
       }
-      const newToken = Buffer.from(teacherUser.id).toString("base64");
+      const newToken = Buffer.from(`${teacherUser.id}|${teacherUser.email}|${teacherUser.name}|${teacherUser.role}|${teacherUser.classroomId || ""}`).toString("base64");
       activeSessions.set(newToken, teacherUser.id);
       res.json({
         success: true,
@@ -255,7 +264,7 @@ async function startServer(port = Number(process.env.PORT) || 3e3) {
         };
         db.addUser(parentUser);
       }
-      const newToken = Buffer.from(parentUser.id).toString("base64");
+      const newToken = Buffer.from(`${parentUser.id}|${parentUser.email}|${parentUser.name}|${parentUser.role}|${parentUser.classroomId || ""}`).toString("base64");
       activeSessions.set(newToken, parentUser.id);
       res.json({
         success: true,

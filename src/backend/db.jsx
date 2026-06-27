@@ -1,176 +1,20 @@
-import fs from 'fs';
-import path from 'path';
-
-// Define DB Interfaces
-export interface User {
-  id: string;
-  email: string;
-  passwordHash: string;
-  name: string;
-  role: 'Super Admin' | 'Centre Head' | 'Centre Admin' | 'Teacher' | 'Counsellor' | 'Parent';
-  avatar?: string;
-  phone?: string;
-  classroomId?: string;
-  active: boolean;
-  gender?: 'Male' | 'Female' | 'Other' | '';
-}
-
-export interface Child {
-  id: string;
-  fullName: string;
-  dob: string;
-  age: number;
-  gender: 'Male' | 'Female' | 'Other';
-  bloodGroup: string;
-  parentName: string;
-  parentPhone: string;
-  parentEmail?: string;
-  address: string;
-  medicalNotes?: string;
-  allergies?: string;
-  emergencyContact: string;
-  classroomId: string;
-  classroomName: string;
-  teacherId: string;
-  teacherName: string;
-  photo?: string;
-}
-
-export interface Parent {
-  id: string;
-  fullName: string;
-  email: string;
-  phone: string;
-  address: string;
-  relationship: 'Father' | 'Mother' | 'Guardian';
-}
-
-export interface Observation {
-  id: string;
-  childId: string;
-  childName: string;
-  classroomName: string;
-  category: 'Communication' | 'Physical' | 'Social' | 'Behaviour' | 'Learning' | 'Motor Skills' | 'Creativity' | 'Emotional' | 'Language' | 'Health';
-  note: string;
-  teacherId: string;
-  teacherName: string;
-  date: string;
-  riskLevel: 'Low' | 'Medium' | 'High';
-  status: 'Pending' | 'Analyzed';
-}
-
-export interface AIReport {
-  id: string;
-  observationId: string;
-  childId: string;
-  childName: string;
-  summary: string;
-  strengths: string[];
-  concerns: string[];
-  recommendations: string[];
-  activities: string[];
-  developmentNotes: {
-    socialSkills: string;
-    learningProgress: string;
-    communicationSkills: string;
-    emotionalBehaviour: string;
-    confidenceLevel: string;
-  };
-  parentSuggestions: string[];
-  teacherRecommendations: string[];
-  riskLevel: 'Low' | 'Medium' | 'High';
-  overallSummary: string;
-  dateGenerated: string;
-  generatedBy: string;
-}
-
-export interface Attendance {
-  id: string;
-  childId: string;
-  childName: string;
-  classroomId: string;
-  classroomName: string;
-  date: string; // YYYY-MM-DD
-  status: 'Present' | 'Absent' | 'Late';
-  notes?: string;
-}
-
-export interface Classroom {
-  id: string;
-  name: string;
-  capacity: number;
-  gradeLevel: string;
-}
-
-export interface Milestone {
-  id: string;
-  title: string;
-  description: string;
-  category: string;
-  targetAgeMonths: number;
-}
-
-export interface Notification {
-  id: string;
-  userId: string;
-  title: string;
-  message: string;
-  type: 'success' | 'error' | 'warning' | 'info';
-  isRead: boolean;
-  timestamp: string;
-}
-
-export interface ActivityLog {
-  id: string;
-  userId: string;
-  userName: string;
-  action: string;
-  details: string;
-  timestamp: string;
-}
-
-export interface SystemSettings {
-  schoolName: string;
-  logoUrl: string;
-  theme: 'light' | 'dark';
-  smtpHost: string;
-  smtpPort: number;
-  smtpUser: string;
-  backupInterval: string;
-}
-
-interface DBData {
-  users: User[];
-  children: Child[];
-  parents: Parent[];
-  observations: Observation[];
-  aiReports: AIReport[];
-  attendance: Attendance[];
-  classrooms: Classroom[];
-  milestones: Milestone[];
-  notifications: Notification[];
-  activityLogs: ActivityLog[];
-  settings: SystemSettings;
-}
-
-const DATA_DIR = path.join(process.cwd(), 'data');
-const DB_FILE = path.join(DATA_DIR, 'db.json');
-
+import fs from "fs";
+import path from "path";
+const DATA_DIR = path.join(process.cwd(), "data");
+const DB_FILE = path.join(DATA_DIR, "db.json");
 export class Database {
-  private data: DBData;
-
+  data;
   constructor() {
     this.data = this.getInitialData();
     this.init();
   }
-
-  private init() {
+  init() {
     if (!fs.existsSync(DATA_DIR)) {
       fs.mkdirSync(DATA_DIR, { recursive: true });
     }
     if (fs.existsSync(DB_FILE)) {
       try {
-        const fileContent = fs.readFileSync(DB_FILE, 'utf-8');
+        const fileContent = fs.readFileSync(DB_FILE, "utf-8");
         this.data = JSON.parse(fileContent);
       } catch (e) {
         console.error("Failed to parse database file, utilizing default memory data", e);
@@ -179,22 +23,22 @@ export class Database {
       this.save();
     }
   }
-
-  public save() {
+  save() {
     try {
-      fs.writeFileSync(DB_FILE, JSON.stringify(this.data, null, 2), 'utf-8');
+      fs.writeFileSync(DB_FILE, JSON.stringify(this.data, null, 2), "utf-8");
     } catch (e) {
       console.error("Failed to write to database file", e);
     }
   }
-
   // Getters
-  public getUsers() { return this.data.users; }
-  public getChildren() { return this.data.children; }
-  public getParents() {
-    const parentsMap = new Map<string, Parent>();
-    
-    // Add existing static parents
+  getUsers() {
+    return this.data.users;
+  }
+  getChildren() {
+    return this.data.children;
+  }
+  getParents() {
+    const parentsMap = /* @__PURE__ */ new Map();
     if (this.data.parents) {
       for (const p of this.data.parents) {
         if (p.email) {
@@ -204,21 +48,17 @@ export class Database {
         }
       }
     }
-    
-    // Dynamically build and add parents from any child's parent details
     if (this.data.children) {
       for (const c of this.data.children) {
         if (c.parentName) {
           const parentName = c.parentName.trim();
           if (!parentName) continue;
-          
           let emailKey = "";
           if (c.parentEmail && c.parentEmail.trim()) {
             emailKey = c.parentEmail.toLowerCase().trim();
           } else {
             emailKey = parentName.toLowerCase().replace(/[^a-z0-9]/g, "") + "@firstcry.com";
           }
-          
           if (!parentsMap.has(emailKey)) {
             const cleanId = "pr-" + Buffer.from(emailKey).toString("hex").slice(0, 12);
             parentsMap.set(emailKey, {
@@ -233,27 +73,40 @@ export class Database {
         }
       }
     }
-    
     return Array.from(parentsMap.values());
   }
-  public getObservations() { return this.data.observations; }
-  public getAIReports() { return this.data.aiReports; }
-  public getAttendance() { return this.data.attendance; }
-  public getClassrooms() { return this.data.classrooms; }
-  public getMilestones() { return this.data.milestones; }
-  public getNotifications() { return this.data.notifications; }
-  public getActivityLogs() { return this.data.activityLogs; }
-  public getSettings() { return this.data.settings; }
-
+  getObservations() {
+    return this.data.observations;
+  }
+  getAIReports() {
+    return this.data.aiReports;
+  }
+  getAttendance() {
+    return this.data.attendance;
+  }
+  getClassrooms() {
+    return this.data.classrooms;
+  }
+  getMilestones() {
+    return this.data.milestones;
+  }
+  getNotifications() {
+    return this.data.notifications;
+  }
+  getActivityLogs() {
+    return this.data.activityLogs;
+  }
+  getSettings() {
+    return this.data.settings;
+  }
   // Setters/CRUD Operations
-  public addUser(user: User) {
+  addUser(user) {
     this.data.users.push(user);
     this.save();
     return user;
   }
-
-  public updateUser(id: string, updated: Partial<User>) {
-    const idx = this.data.users.findIndex(u => u.id === id);
+  updateUser(id, updated) {
+    const idx = this.data.users.findIndex((u) => u.id === id);
     if (idx !== -1) {
       this.data.users[idx] = { ...this.data.users[idx], ...updated };
       this.save();
@@ -261,20 +114,17 @@ export class Database {
     }
     return null;
   }
-
-  public deleteUser(id: string) {
-    this.data.users = this.data.users.filter(u => u.id !== id);
+  deleteUser(id) {
+    this.data.users = this.data.users.filter((u) => u.id !== id);
     this.save();
   }
-
-  public addChild(child: Child) {
+  addChild(child) {
     this.data.children.push(child);
     this.save();
     return child;
   }
-
-  public updateChild(id: string, updated: Partial<Child>) {
-    const idx = this.data.children.findIndex(c => c.id === id);
+  updateChild(id, updated) {
+    const idx = this.data.children.findIndex((c) => c.id === id);
     if (idx !== -1) {
       this.data.children[idx] = { ...this.data.children[idx], ...updated };
       this.save();
@@ -282,24 +132,20 @@ export class Database {
     }
     return null;
   }
-
-  public deleteChild(id: string) {
-    this.data.children = this.data.children.filter(c => c.id !== id);
-    // Also cleanup child's attendance and observations
-    this.data.attendance = this.data.attendance.filter(a => a.childId !== id);
-    this.data.observations = this.data.observations.filter(o => o.childId !== id);
-    this.data.aiReports = this.data.aiReports.filter(r => r.childId !== id);
+  deleteChild(id) {
+    this.data.children = this.data.children.filter((c) => c.id !== id);
+    this.data.attendance = this.data.attendance.filter((a) => a.childId !== id);
+    this.data.observations = this.data.observations.filter((o) => o.childId !== id);
+    this.data.aiReports = this.data.aiReports.filter((r) => r.childId !== id);
     this.save();
   }
-
-  public addObservation(obs: Observation) {
+  addObservation(obs) {
     this.data.observations.push(obs);
     this.save();
     return obs;
   }
-
-  public updateObservation(id: string, updated: Partial<Observation>) {
-    const idx = this.data.observations.findIndex(o => o.id === id);
+  updateObservation(id, updated) {
+    const idx = this.data.observations.findIndex((o) => o.id === id);
     if (idx !== -1) {
       this.data.observations[idx] = { ...this.data.observations[idx], ...updated };
       this.save();
@@ -307,29 +153,23 @@ export class Database {
     }
     return null;
   }
-
-  public deleteObservation(id: string) {
-    this.data.observations = this.data.observations.filter(o => o.id !== id);
-    // Also delete any associated AI report
-    this.data.aiReports = this.data.aiReports.filter(r => r.observationId !== id);
+  deleteObservation(id) {
+    this.data.observations = this.data.observations.filter((o) => o.id !== id);
+    this.data.aiReports = this.data.aiReports.filter((r) => r.observationId !== id);
     this.save();
   }
-
-  public addAIReport(report: AIReport) {
+  addAIReport(report) {
     this.data.aiReports.push(report);
     this.save();
     return report;
   }
-
-  public deleteAIReport(id: string) {
-    this.data.aiReports = this.data.aiReports.filter(r => r.id !== id);
+  deleteAIReport(id) {
+    this.data.aiReports = this.data.aiReports.filter((r) => r.id !== id);
     this.save();
   }
-
-  public setAttendance(records: Attendance[]) {
-    // Process list, replacing duplicates for same child and date
+  setAttendance(records) {
     for (const rec of records) {
-      const idx = this.data.attendance.findIndex(a => a.childId === rec.childId && a.date === rec.date);
+      const idx = this.data.attendance.findIndex((a) => a.childId === rec.childId && a.date === rec.date);
       if (idx !== -1) {
         this.data.attendance[idx] = rec;
       } else {
@@ -338,35 +178,31 @@ export class Database {
     }
     this.save();
   }
-
-  public addNotification(notif: Notification) {
-    this.data.notifications.unshift(notif); // Add to beginning
+  addNotification(notif) {
+    this.data.notifications.unshift(notif);
     if (this.data.notifications.length > 100) {
-      this.data.notifications.pop(); // Keep limit of 100
+      this.data.notifications.pop();
     }
     this.save();
     return notif;
   }
-
-  public markNotificationAsRead(id: string) {
-    const idx = this.data.notifications.findIndex(n => n.id === id);
+  markNotificationAsRead(id) {
+    const idx = this.data.notifications.findIndex((n) => n.id === id);
     if (idx !== -1) {
       this.data.notifications[idx].isRead = true;
       this.save();
     }
   }
-
-  public markAllNotificationsAsRead(userId: string) {
-    this.data.notifications = this.data.notifications.map(n => n.userId === userId ? { ...n, isRead: true } : n);
+  markAllNotificationsAsRead(userId) {
+    this.data.notifications = this.data.notifications.map((n) => n.userId === userId ? { ...n, isRead: true } : n);
     this.save();
   }
-
-  public deleteNotification(id: string, userId: string, role: string) {
+  deleteNotification(id, userId, role) {
     const prevLength = this.data.notifications.length;
-    this.data.notifications = this.data.notifications.filter(n => {
+    this.data.notifications = this.data.notifications.filter((n) => {
       if (n.id === id) {
         if (role === "Super Admin" || role === "Centre Head" || n.userId === userId) {
-          return false; // delete it
+          return false;
         }
       }
       return true;
@@ -377,18 +213,16 @@ export class Database {
     }
     return changed;
   }
-
-  public clearAllNotifications(userId: string, role: string) {
-    this.data.notifications = this.data.notifications.filter(n => {
+  clearAllNotifications(userId, role) {
+    this.data.notifications = this.data.notifications.filter((n) => {
       if (role === "Super Admin" || role === "Centre Head" || n.userId === userId) {
-        return false; // delete it
+        return false;
       }
       return true;
     });
     this.save();
   }
-
-  public addActivityLog(log: ActivityLog) {
+  addActivityLog(log) {
     this.data.activityLogs.unshift(log);
     if (this.data.activityLogs.length > 200) {
       this.data.activityLogs.pop();
@@ -396,91 +230,92 @@ export class Database {
     this.save();
     return log;
   }
-
-  public updateSettings(settings: Partial<SystemSettings>) {
+  updateSettings(settings) {
     this.data.settings = { ...this.data.settings, ...settings };
     this.save();
     return this.data.settings;
   }
-
   // Seeding Default High-Quality Data
-  private getInitialData(): DBData {
-    const today = new Date().toISOString().split('T')[0];
-    const yesterday = new Date(Date.now() - 86400000).toISOString().split('T')[0];
-    const twoDaysAgo = new Date(Date.now() - 172800000).toISOString().split('T')[0];
-
-    const users: User[] = [
+  getInitialData() {
+    const today = (/* @__PURE__ */ new Date()).toISOString().split("T")[0];
+    const yesterday = new Date(Date.now() - 864e5).toISOString().split("T")[0];
+    const twoDaysAgo = new Date(Date.now() - 1728e5).toISOString().split("T")[0];
+    const users = [
       {
         id: "usr-admin",
         email: "admin@firstcry.com",
-        passwordHash: "$2a$10$r8Qsh7vXf.M.l.e3i0o29OVgS/K3NlyfLoxjSjY8oWpBfR/0p89eW", // plain text 'admin123'
+        passwordHash: "$2a$10$r8Qsh7vXf.M.l.e3i0o29OVgS/K3NlyfLoxjSjY8oWpBfR/0p89eW",
+        // plain text 'admin123'
         name: "Shalini Sen",
         role: "Super Admin",
         avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150",
         phone: "+91 98765 43210",
-        active: true,
+        active: true
       },
       {
         id: "usr-head",
         email: "head@firstcry.com",
-        passwordHash: "$2a$10$r8Qsh7vXf.M.l.e3i0o29OVgS/K3NlyfLoxjSjY8oWpBfR/0p89eW", // 'admin123'
+        passwordHash: "$2a$10$r8Qsh7vXf.M.l.e3i0o29OVgS/K3NlyfLoxjSjY8oWpBfR/0p89eW",
+        // 'admin123'
         name: "Vikram Malhotra",
         role: "Centre Head",
         avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150",
         phone: "+91 98765 43211",
-        active: true,
+        active: true
       },
       {
         id: "usr-teacher1",
         email: "teacher@firstcry.com",
-        passwordHash: "$2a$10$r8Qsh7vXf.M.l.e3i0o29OVgS/K3NlyfLoxjSjY8oWpBfR/0p89eW", // 'admin123'
+        passwordHash: "$2a$10$r8Qsh7vXf.M.l.e3i0o29OVgS/K3NlyfLoxjSjY8oWpBfR/0p89eW",
+        // 'admin123'
         name: "Priya Nair",
         role: "Teacher",
         avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150",
         phone: "+91 98765 43212",
         classroomId: "cls-toddlers",
-        active: true,
+        active: true
       },
       {
         id: "usr-teacher2",
         email: "sneha@firstcry.com",
-        passwordHash: "$2a$10$r8Qsh7vXf.M.l.e3i0o29OVgS/K3NlyfLoxjSjY8oWpBfR/0p89eW", // 'admin123'
+        passwordHash: "$2a$10$r8Qsh7vXf.M.l.e3i0o29OVgS/K3NlyfLoxjSjY8oWpBfR/0p89eW",
+        // 'admin123'
         name: "Sneha Rao",
         role: "Teacher",
         avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150",
         phone: "+91 98765 43213",
         classroomId: "cls-nursery",
-        active: true,
+        active: true
       },
       {
         id: "usr-counsellor",
         email: "counsellor@firstcry.com",
-        passwordHash: "$2a$10$r8Qsh7vXf.M.l.e3i0o29OVgS/K3NlyfLoxjSjY8oWpBfR/0p89eW", // 'admin123'
+        passwordHash: "$2a$10$r8Qsh7vXf.M.l.e3i0o29OVgS/K3NlyfLoxjSjY8oWpBfR/0p89eW",
+        // 'admin123'
         name: "Dr. Anjali Deshmukh",
         role: "Counsellor",
         avatar: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=150",
         phone: "+91 98765 43214",
-        active: true,
+        active: true
       },
       {
         id: "usr-parent",
         email: "parent@firstcry.com",
-        passwordHash: "$2a$10$r8Qsh7vXf.M.l.e3i0o29OVgS/K3NlyfLoxjSjY8oWpBfR/0p89eW", // 'admin123'
+        passwordHash: "$2a$10$r8Qsh7vXf.M.l.e3i0o29OVgS/K3NlyfLoxjSjY8oWpBfR/0p89eW",
+        // 'admin123'
         name: "Rajesh Sharma",
         role: "Parent",
         avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150",
         phone: "+91 98765 43215",
-        active: true,
+        active: true
       }
     ];
-
-    const classrooms: Classroom[] = [
+    const classrooms = [
       { id: "cls-toddlers", name: "Toddlers (Playgroup)", capacity: 15, gradeLevel: "Pre-Nursery" },
       { id: "cls-nursery", name: "Nursery", capacity: 20, gradeLevel: "Nursery" },
       { id: "cls-prep", name: "Kindergarten (Prep)", capacity: 25, gradeLevel: "K1-K2" }
     ];
-
-    const children: Child[] = [
+    const children = [
       {
         id: "ch-riya",
         fullName: "Riya Sharma",
@@ -562,15 +397,13 @@ export class Database {
         photo: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150"
       }
     ];
-
-    const parents: Parent[] = [
+    const parents = [
       { id: "pr-rajesh", fullName: "Rajesh Sharma", email: "parent@firstcry.com", phone: "+91 98765 43215", address: "Flat 402, Sunshine Heights, Koramangala, Bengaluru", relationship: "Father" },
       { id: "pr-karan", fullName: "Karan Patel", email: "karan.patel@gmail.com", phone: "+91 98123 45678", address: "Villa 12, Sobha Green Glen, Bellandur, Bengaluru", relationship: "Father" },
       { id: "pr-vikram", fullName: "Vikram Malhotra", email: "head@firstcry.com", phone: "+91 98765 43211", address: "Penthouse 3, Prestige Lake Ridge, Whitefield, Bengaluru", relationship: "Father" },
       { id: "pr-debashis", fullName: "Debashis Sen", email: "debashis.sen@gmail.com", phone: "+91 99001 22334", address: "Apt 201, Shriram Blue, KR Puram, Bengaluru", relationship: "Father" }
     ];
-
-    const observations: Observation[] = [
+    const observations = [
       {
         id: "obs-1",
         childId: "ch-riya",
@@ -624,8 +457,7 @@ export class Database {
         status: "Pending"
       }
     ];
-
-    const aiReports: AIReport[] = [
+    const aiReports = [
       {
         id: "rep-1",
         observationId: "obs-1",
@@ -675,27 +507,23 @@ export class Database {
         generatedBy: "Priya Nair"
       }
     ];
-
-    const attendance: Attendance[] = [
+    const attendance = [
       { id: "att-1", childId: "ch-riya", childName: "Riya Sharma", classroomId: "cls-toddlers", classroomName: "Toddlers (Playgroup)", date: today, status: "Present" },
       { id: "att-2", childId: "ch-aarav", childName: "Aarav Patel", classroomId: "cls-toddlers", classroomName: "Toddlers (Playgroup)", date: today, status: "Present" },
       { id: "att-3", childId: "ch-ananya", childName: "Ananya Sen", classroomId: "cls-nursery", classroomName: "Nursery", date: today, status: "Late", notes: "Traffic delays" },
       { id: "att-4", childId: "ch-kabir", childName: "Kabir Malhotra", classroomId: "cls-prep", classroomName: "Kindergarten (Prep)", date: today, status: "Absent", notes: "Mild fever" },
-
       { id: "att-5", childId: "ch-riya", childName: "Riya Sharma", classroomId: "cls-toddlers", classroomName: "Toddlers (Playgroup)", date: yesterday, status: "Present" },
       { id: "att-6", childId: "ch-aarav", childName: "Aarav Patel", classroomId: "cls-toddlers", classroomName: "Toddlers (Playgroup)", date: yesterday, status: "Present" },
       { id: "att-7", childId: "ch-ananya", childName: "Ananya Sen", classroomId: "cls-nursery", classroomName: "Nursery", date: yesterday, status: "Present" },
       { id: "att-8", childId: "ch-kabir", childName: "Kabir Malhotra", classroomId: "cls-prep", classroomName: "Kindergarten (Prep)", date: yesterday, status: "Present" }
     ];
-
-    const milestones: Milestone[] = [
+    const milestones = [
       { id: "m-1", title: "Shares toys with peers", description: "Willingly offers play materials to classmates during free play.", category: "Social", targetAgeMonths: 36 },
       { id: "m-2", title: "Expresses needs in words", description: "Uses 3-4 word phrases to request food, water, or help.", category: "Communication", targetAgeMonths: 36 },
       { id: "m-3", title: "Hops on one foot", description: "Balances and hops on one foot at least 3 times consecutively.", category: "Physical", targetAgeMonths: 48 },
       { id: "m-4", title: "Sorts items by color", description: "Identifies and groups plastic blocks or crayons by their prime color.", category: "Learning", targetAgeMonths: 36 }
     ];
-
-    const notifications: Notification[] = [
+    const notifications = [
       {
         id: "not-1",
         userId: "usr-teacher1",
@@ -703,7 +531,7 @@ export class Database {
         message: "You have recorded a social observation note for Riya Sharma.",
         type: "success",
         isRead: false,
-        timestamp: new Date().toISOString()
+        timestamp: (/* @__PURE__ */ new Date()).toISOString()
       },
       {
         id: "not-2",
@@ -712,7 +540,7 @@ export class Database {
         message: "A new development report is generated for child Riya Sharma.",
         type: "info",
         isRead: false,
-        timestamp: new Date(Date.now() - 3600000).toISOString()
+        timestamp: new Date(Date.now() - 36e5).toISOString()
       },
       {
         id: "not-3",
@@ -721,18 +549,17 @@ export class Database {
         message: "Please complete today's Toddlers classroom attendance log.",
         type: "warning",
         isRead: true,
-        timestamp: new Date(Date.now() - 14400000).toISOString()
+        timestamp: new Date(Date.now() - 144e5).toISOString()
       }
     ];
-
-    const activityLogs: ActivityLog[] = [
+    const activityLogs = [
       {
         id: "log-1",
         userId: "usr-teacher1",
         userName: "Priya Nair",
         action: "Observation Created",
         details: "Logged Social skills observation for Riya Sharma.",
-        timestamp: new Date().toISOString()
+        timestamp: (/* @__PURE__ */ new Date()).toISOString()
       },
       {
         id: "log-2",
@@ -740,11 +567,10 @@ export class Database {
         userName: "Priya Nair",
         action: "AI Report Generated",
         details: "Triggered Gemini intelligence model for observation obs-1.",
-        timestamp: new Date(Date.now() - 10000).toISOString()
+        timestamp: new Date(Date.now() - 1e4).toISOString()
       }
     ];
-
-    const settings: SystemSettings = {
+    const settings = {
       schoolName: "FirstCry Intellitots, Koramangala",
       logoUrl: "https://images.unsplash.com/photo-1595152772835-219674b2a8a6?w=100",
       theme: "light",
@@ -753,7 +579,6 @@ export class Database {
       smtpUser: "notifications@firstcryintellitots.com",
       backupInterval: "Daily"
     };
-
     return {
       users,
       children,

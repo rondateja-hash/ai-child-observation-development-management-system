@@ -61,6 +61,40 @@
       "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150",
       "phone": "+91 98765 43215",
       "active": true
+    },
+    {
+      "id": "usr-af6b1a4897b9",
+      "email": "rishi@gmail.com",
+      "passwordHash": "parent123",
+      "name": "Harika",
+      "role": "Parent",
+      "phone": "7995001537",
+      "active": true,
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150"
+    },
+    {
+      "id": "usr-829af6365aaa",
+      "email": "akshayakumari612@gmail.com",
+      "passwordHash": "12345",
+      "name": "Akshaya kumari",
+      "role": "Teacher",
+      "phone": "9182355435",
+      "classroomId": "cls-prep",
+      "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150",
+      "active": true,
+      "gender": "Female"
+    },
+    {
+      "id": "usr-9fe9cf955f5e",
+      "email": "Shiva@gmail.com",
+      "passwordHash": "23456",
+      "name": "Shiva Ram",
+      "role": "Teacher",
+      "phone": "2456789764",
+      "classroomId": "cls-prep",
+      "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150",
+      "active": true,
+      "gender": "Male"
     }
   ],
   "children": [
@@ -143,6 +177,26 @@
       "teacherId": "usr-teacher2",
       "teacherName": "Sneha Rao",
       "photo": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150"
+    },
+    {
+      "id": "ch-b0d34e03637e",
+      "fullName": "Rishi",
+      "dob": "2026-06-27",
+      "age": 3,
+      "gender": "Male",
+      "bloodGroup": "O+",
+      "parentName": "Harika",
+      "parentPhone": "7995001537",
+      "parentEmail": "rishi@gmail.com",
+      "address": "chirala, andhrapradesh",
+      "medicalNotes": "no",
+      "allergies": "no",
+      "emergencyContact": "123456789",
+      "classroomId": "cls-prep",
+      "classroomName": "Kindergarten (Prep)",
+      "teacherId": "usr-teacher1",
+      "teacherName": "Priya Nair",
+      "photo": "https://images.unsplash.com/photo-1519457431-44ccd64a579b?w=150"
     }
   ],
   "parents": [
@@ -231,6 +285,19 @@
       "date": "2026-06-25",
       "riskLevel": "Low",
       "status": "Pending"
+    },
+    {
+      "id": "obs-52eb32a45fd2",
+      "childId": "ch-b0d34e03637e",
+      "childName": "Rishi",
+      "classroomName": "Kindergarten (Prep)",
+      "category": "Learning",
+      "note": "he activly participated in every games",
+      "teacherId": "usr-teacher1",
+      "teacherName": "Priya Nair",
+      "date": "2026-06-27",
+      "riskLevel": "Medium",
+      "status": "Analyzed"
     }
   ],
   "aiReports": [
@@ -316,6 +383,52 @@
       "riskLevel": "Medium",
       "overallSummary": "Riya is demonstrating regular milestone development with an expressive language buffer area. Focused expressive and calming routines will help her bridge this gap.",
       "dateGenerated": "2026-06-25",
+      "generatedBy": "Priya Nair"
+    },
+    {
+      "id": "rep-c81a7fb97621",
+      "observationId": "obs-52eb32a45fd2",
+      "childId": "ch-b0d34e03637e",
+      "childName": "Rishi",
+      "summary": "Rishi exhibits exceptional enthusiasm and active participation in structured classroom games and group activities. His eagerness to engage reflects strong social-emotional readiness, excellent peer integration, and a highly positive attitude toward experiential learning. This behavior indicates a well-adjusted, confident three-year-old who thrives in a collaborative preschool environment.",
+      "strengths": [
+        "High level of intrinsic motivation and joyful engagement in diverse group activities.",
+        "Strong social-emotional readiness and a natural inclination for collaborative play.",
+        "Excellent adaptive skills, showing comfort and confidence in structured learning setups."
+      ],
+      "concerns": [
+        "None identified"
+      ],
+      "recommendations": [
+        "Introduce multi-step cooperative games to gently stretch Rishi's cognitive planning and memory retention.",
+        "Integrate structured turn-taking activities to further refine his emerging self-regulation and impulse control.",
+        "Provide opportunities for peer leadership roles during small group tasks to channel his high energy constructively."
+      ],
+      "activities": [
+        "Active listening games like 'Simon Says' with dual-step instructions to boost auditory processing and executive function.",
+        "Cooperative building challenges where Rishi partners with a classmate to construct a tower using shared materials.",
+        "Turn-taking board games or simple card matching games that require waiting patiently for one's turn."
+      ],
+      "developmentNotes": {
+        "socialSkills": "Rishi demonstrates superb social integration, naturally gravitating toward peer groups and actively cooperating during play. His willingness to participate in joint games is an excellent developmental indicator of emerging associative and cooperative play styles.",
+        "learningProgress": "Rishi's active participation shows a strong attention span for age-appropriate tasks and excellent compliance with game structures. He displays a healthy curiosity and processes rules effectively through direct, hands-on involvement.",
+        "communicationSkills": "His successful engagement in group games points to strong receptive language abilities, as he successfully interprets instructions. To support his expressive communication, he should be encouraged to explain game rules to peers or summarize his favorite activities.",
+        "emotionalBehaviour": "Rishi displays vibrant emotional health, showing high resilience and a secure comfort level in his classroom environment. He channels his enthusiasm constructively, indicating a solid foundation in emotional self-regulation.",
+        "confidenceLevel": "Rishi's level of autonomy and self-assurance is highly commendable. He enters group dynamics without hesitation, indicating a secure sense of self and an eagerness to explore new educational horizons."
+      },
+      "parentSuggestions": [
+        "Encourage Rishi to narrate his preschool day, using open-ended questions like 'What was the most fun part of the game today?' to build expressive language.",
+        "Incorporate family game nights with simple rules to reinforce turn-taking, sharing, and coping with both winning and losing.",
+        "Create simple obstacle courses at home to keep him physically active while practicing following sequence-based instructions."
+      ],
+      "teacherRecommendations": [
+        "Utilize Rishi's positive energy by pairing him with quieter or more reserved peers during group games to encourage inclusive classroom dynamics.",
+        "Slowly scaffold game rules by adding mild challenges to keep him cognitively engaged and intellectually stimulated.",
+        "Observe and document his choice of games to understand his specific thematic interests and integrate them into future lesson plans."
+      ],
+      "riskLevel": "Low",
+      "overallSummary": "Rishi's dynamic participation highlights a joyful, confident, and socially adept young learner who is hitting his developmental milestones beautifully. By collaborating on supportive strategies at home and in school, we can continue to foster his wonderful leadership qualities, cognitive growth, and lifelong love for learning.",
+      "dateGenerated": "2026-06-27",
       "generatedBy": "Priya Nair"
     }
   ],
@@ -447,6 +560,33 @@
   ],
   "notifications": [
     {
+      "id": "notif-632825a5-c695-4b51-aabd-b1ce49fb97fa",
+      "userId": "usr-teacher1",
+      "title": "AI Report Generated",
+      "message": "Gemini AI prepared developmental summary for Rishi",
+      "type": "success",
+      "isRead": false,
+      "timestamp": "2026-06-27T05:12:17.879Z"
+    },
+    {
+      "id": "notif-421a4ee6-e39a-4b07-91fe-054e4e73181c",
+      "userId": "usr-head",
+      "title": "Action Required: Medium Risk Observation",
+      "message": "Teacher Priya Nair reported a Medium risk behaviour in Rishi (Learning)",
+      "type": "warning",
+      "isRead": false,
+      "timestamp": "2026-06-27T05:01:44.974Z"
+    },
+    {
+      "id": "notif-e25c0c4d-11bb-4b4f-a7be-2e32e5b224c9",
+      "userId": "usr-admin",
+      "title": "Action Required: Medium Risk Observation",
+      "message": "Teacher Priya Nair reported a Medium risk behaviour in Rishi (Learning)",
+      "type": "warning",
+      "isRead": false,
+      "timestamp": "2026-06-27T05:01:44.971Z"
+    },
+    {
       "id": "not-1",
       "userId": "usr-teacher1",
       "title": "Observation Logged Successfully",
@@ -475,6 +615,142 @@
     }
   ],
   "activityLogs": [
+    {
+      "id": "act-12f2f85e-c74c-46cd-8217-344bd2e08cdc",
+      "userId": "usr-head",
+      "userName": "Vikram Malhotra",
+      "action": "Login",
+      "details": "Successful login as Centre Head",
+      "timestamp": "2026-06-27T05:29:09.954Z"
+    },
+    {
+      "id": "act-29b26e19-da07-4ece-917d-d7e24ecb47b3",
+      "userId": "usr-admin",
+      "userName": "Shalini Sen",
+      "action": "User Created",
+      "details": "Created new user Shiva Ram with role Teacher",
+      "timestamp": "2026-06-27T05:28:44.191Z"
+    },
+    {
+      "id": "act-2dfeccb0-f79d-476c-a2be-2061d240d878",
+      "userId": "usr-admin",
+      "userName": "Shalini Sen",
+      "action": "Login",
+      "details": "Successful login as Super Admin",
+      "timestamp": "2026-06-27T05:27:08.891Z"
+    },
+    {
+      "id": "act-ac62fb2c-7587-4149-b2d8-0a9ce1ce1dff",
+      "userId": "usr-parent",
+      "userName": "Rajesh Sharma",
+      "action": "Login",
+      "details": "Successful login as Parent",
+      "timestamp": "2026-06-27T05:26:58.718Z"
+    },
+    {
+      "id": "act-9734869a-6fd4-4575-9f24-7ab1121bf585",
+      "userId": "usr-admin",
+      "userName": "Shalini Sen",
+      "action": "User Created",
+      "details": "Created new user Akshaya kumari with role Teacher",
+      "timestamp": "2026-06-27T05:18:11.575Z"
+    },
+    {
+      "id": "act-f51efd00-8566-4183-9d1a-a8484d687f56",
+      "userId": "usr-admin",
+      "userName": "Shalini Sen",
+      "action": "Login",
+      "details": "Successful login as Super Admin",
+      "timestamp": "2026-06-27T05:16:33.234Z"
+    },
+    {
+      "id": "act-5608a764-53ed-4c18-bf88-f0005dbbe47f",
+      "userId": "usr-parent",
+      "userName": "Rajesh Sharma",
+      "action": "Login",
+      "details": "Successful login as Parent",
+      "timestamp": "2026-06-27T05:16:03.092Z"
+    },
+    {
+      "id": "act-aec49cb1-3cf6-4815-a438-5a12761f1f55",
+      "userId": "usr-teacher1",
+      "userName": "Priya Nair",
+      "action": "AI Report Generated",
+      "details": "Generated standard intelligence development profile for Rishi",
+      "timestamp": "2026-06-27T05:12:17.882Z"
+    },
+    {
+      "id": "act-db8bc4b9-54fa-4a68-afa4-be1d1b21ccd3",
+      "userId": "usr-teacher1",
+      "userName": "Priya Nair",
+      "action": "Login",
+      "details": "Successful login as Teacher",
+      "timestamp": "2026-06-27T05:11:52.412Z"
+    },
+    {
+      "id": "act-b9a2830f-577e-4ee5-8302-071b1955bd78",
+      "userId": "usr-teacher1",
+      "userName": "Priya Nair",
+      "action": "Login",
+      "details": "Successful login as Teacher",
+      "timestamp": "2026-06-27T05:08:21.621Z"
+    },
+    {
+      "id": "act-c88a67dd-f08d-462d-bf10-3b6fde1c76f3",
+      "userId": "usr-teacher1",
+      "userName": "Priya Nair",
+      "action": "Login",
+      "details": "Successful login as Teacher",
+      "timestamp": "2026-06-27T05:07:53.090Z"
+    },
+    {
+      "id": "act-f945a3ae-c187-41a3-8ec3-f2e4d8925a6e",
+      "userId": "usr-teacher1",
+      "userName": "Priya Nair",
+      "action": "Observation Created",
+      "details": "Created Learning observation for Rishi",
+      "timestamp": "2026-06-27T05:01:44.977Z"
+    },
+    {
+      "id": "act-d4c1b6ee-9507-4712-9842-65e7ddcf7c8c",
+      "userId": "usr-teacher1",
+      "userName": "Priya Nair",
+      "action": "Login",
+      "details": "Successful login as Teacher",
+      "timestamp": "2026-06-27T05:00:58.231Z"
+    },
+    {
+      "id": "act-89f3a0d5-3195-4371-a573-ac976ad3c084",
+      "userId": "usr-teacher1",
+      "userName": "Priya Nair",
+      "action": "Child Enrolled",
+      "details": "Enrolled new student Rishi in Kindergarten (Prep)",
+      "timestamp": "2026-06-27T04:59:20.687Z"
+    },
+    {
+      "id": "act-8e74bf54-7752-4081-9856-f3a173ea08f5",
+      "userId": "usr-teacher1",
+      "userName": "Priya Nair",
+      "action": "Login",
+      "details": "Successful login as Teacher",
+      "timestamp": "2026-06-27T04:57:30.173Z"
+    },
+    {
+      "id": "act-88288f00-7a34-4537-8a65-58c1d635ebc6",
+      "userId": "usr-admin",
+      "userName": "Shalini Sen",
+      "action": "Login",
+      "details": "Successful login as Super Admin",
+      "timestamp": "2026-06-27T04:57:13.821Z"
+    },
+    {
+      "id": "act-42048b00-cc62-409e-b496-c96aa262e336",
+      "userId": "usr-parent",
+      "userName": "Rajesh Sharma",
+      "action": "Login",
+      "details": "Successful login as Parent",
+      "timestamp": "2026-06-27T04:49:29.656Z"
+    },
     {
       "id": "act-54c636bd-f499-4829-a244-868a30a9abd9",
       "userId": "usr-teacher1",

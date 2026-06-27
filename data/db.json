@@ -95,6 +95,26 @@
       "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150",
       "active": true,
       "gender": "Male"
+    },
+    {
+      "id": "usr-rondateja",
+      "email": "rondateja@gmail.com",
+      "passwordHash": "password123",
+      "name": "Ronda Teja",
+      "role": "Parent",
+      "phone": "+91 98765 43219",
+      "active": true,
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150"
+    },
+    {
+      "id": "usr-tejasree",
+      "email": "tejasree@gmail.com",
+      "passwordHash": "password123",
+      "name": "Teja Sree",
+      "role": "Parent",
+      "phone": "+91 98765 43220",
+      "active": true,
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150"
     }
   ],
   "children": [
@@ -197,6 +217,46 @@
       "teacherId": "usr-teacher1",
       "teacherName": "Priya Nair",
       "photo": "https://images.unsplash.com/photo-1519457431-44ccd64a579b?w=150"
+    },
+    {
+      "id": "ch-teja-jr",
+      "fullName": "Teja Jr",
+      "dob": "2022-05-15",
+      "age": 4,
+      "gender": "Male",
+      "bloodGroup": "O+",
+      "parentName": "Ronda Teja",
+      "parentPhone": "+91 98765 43219",
+      "parentEmail": "rondateja@gmail.com",
+      "address": "Hyderabad, Telangana",
+      "allergies": "None",
+      "medicalNotes": "Healthy active child",
+      "emergencyContact": "Ronda Teja (Father) - +91 98765 43219",
+      "classroomId": "cls-prep",
+      "classroomName": "Kindergarten (Prep)",
+      "teacherId": "usr-teacher1",
+      "teacherName": "Priya Nair",
+      "photo": "https://images.unsplash.com/photo-1519457431-44ccd64a579b?w=150"
+    },
+    {
+      "id": "ch-sree-jr",
+      "fullName": "Sree Jr",
+      "dob": "2023-08-20",
+      "age": 3,
+      "gender": "Female",
+      "bloodGroup": "A+",
+      "parentName": "Teja Sree",
+      "parentPhone": "+91 98765 43220",
+      "parentEmail": "tejasree@gmail.com",
+      "address": "Hyderabad, Telangana",
+      "allergies": "None",
+      "medicalNotes": "Healthy active child",
+      "emergencyContact": "Teja Sree (Mother) - +91 98765 43220",
+      "classroomId": "cls-nursery",
+      "classroomName": "Nursery",
+      "teacherId": "usr-teacher2",
+      "teacherName": "Sneha Rao",
+      "photo": ""
     }
   ],
   "parents": [
@@ -231,6 +291,22 @@
       "phone": "+91 99001 22334",
       "address": "Apt 201, Shriram Blue, KR Puram, Bengaluru",
       "relationship": "Father"
+    },
+    {
+      "id": "pr-rondateja",
+      "fullName": "Ronda Teja",
+      "email": "rondateja@gmail.com",
+      "phone": "+91 98765 43219",
+      "address": "Hyderabad, Telangana",
+      "relationship": "Father"
+    },
+    {
+      "id": "pr-tejasree",
+      "fullName": "Teja Sree",
+      "email": "tejasree@gmail.com",
+      "phone": "+91 98765 43220",
+      "address": "Hyderabad, Telangana",
+      "relationship": "Mother"
     }
   ],
   "observations": [

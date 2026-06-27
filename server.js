@@ -48,9 +48,25 @@ async function startServer(port = Number(process.env.PORT) || 3e3) {
     req.user = user;
     next();
   };
-  const verifyPassword = (password, hash) => {
-    if (hash.startsWith("$2a$10$") && password === "admin123") return true;
-    return password === hash;
+  const hashPassword = (password) => {
+    const salt = crypto.randomBytes(16).toString("hex");
+    const hash = crypto.pbkdf2Sync(password, salt, 1000, 64, "sha512").toString("hex");
+    return `${salt}:${hash}`;
+  };
+  const verifyPassword = (password, storedHash) => {
+    if (storedHash.startsWith("$2a$10$") && password === "admin123") return true;
+    if (storedHash === "admin123" && password === "admin123") return true;
+    if (storedHash === "password123" && password === "password123") return true;
+    if (!storedHash.includes(":")) {
+      return password === storedHash;
+    }
+    try {
+      const [salt, hash] = storedHash.split(":");
+      const verifyHash = crypto.pbkdf2Sync(password, salt, 1000, 64, "sha512").toString("hex");
+      return hash === verifyHash;
+    } catch (e) {
+      return false;
+    }
   };
   const isChildOfParent = (child, parentUser) => {
     if (!parentUser) return false;
@@ -121,15 +137,20 @@ async function startServer(port = Number(process.env.PORT) || 3e3) {
       res.status(400).json({ error: "Name, email, and password are required." });
       return;
     }
+    if (password.length < 6) {
+      res.status(400).json({ error: "Password must be at least 6 characters long." });
+      return;
+    }
     if (db.getUsers().some((u) => u.email.toLowerCase() === email.toLowerCase())) {
       res.status(400).json({ error: "Email address is already registered." });
       return;
     }
     const userRole = (role === "Teacher" || role === "Parent") ? role : "Parent";
+    const passwordHash = hashPassword(password);
     const newUser = {
       id: "usr-" + crypto.randomBytes(6).toString("hex"),
       email: email.trim(),
-      passwordHash: password,
+      passwordHash,
       name: name.trim(),
       role: userRole,
       phone: phone || "",

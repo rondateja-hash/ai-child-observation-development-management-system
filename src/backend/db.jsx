@@ -9,18 +9,18 @@ export class Database {
     this.init();
   }
   init() {
-    if (!fs.existsSync(DATA_DIR)) {
-      fs.mkdirSync(DATA_DIR, { recursive: true });
-    }
-    if (fs.existsSync(DB_FILE)) {
-      try {
+    try {
+      if (!fs.existsSync(DATA_DIR)) {
+        fs.mkdirSync(DATA_DIR, { recursive: true });
+      }
+      if (fs.existsSync(DB_FILE)) {
         const fileContent = fs.readFileSync(DB_FILE, "utf-8");
         this.data = JSON.parse(fileContent);
-      } catch (e) {
-        console.error("Failed to parse database file, utilizing default memory data", e);
+      } else {
+        this.save();
       }
-    } else {
-      this.save();
+    } catch (e) {
+      console.error("Database file initialization failed, using in-memory store:", e);
     }
   }
   save() {

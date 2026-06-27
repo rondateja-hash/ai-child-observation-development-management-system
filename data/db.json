@@ -616,6 +616,14 @@
   ],
   "activityLogs": [
     {
+      "id": "act-0f527505-8693-4e48-b343-2a192abe8370",
+      "userId": "usr-admin",
+      "userName": "Shalini Sen",
+      "action": "Login",
+      "details": "Successful login as Super Admin",
+      "timestamp": "2026-06-27T09:23:53.902Z"
+    },
+    {
       "id": "act-709402b3-b3b9-4070-9c7c-57c51ef9b582",
       "userId": "usr-admin",
       "userName": "Shalini Sen",

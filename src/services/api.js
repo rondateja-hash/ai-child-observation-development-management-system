@@ -88,10 +88,14 @@ export const api = {
         return fetchAPI("/auth/profiles");
     },
     switchProfile: async (role, profileId) => {
-        return fetchAPI("/auth/switch-profile", {
+        const data = await fetchAPI("/auth/switch-profile", {
             method: "POST",
             body: JSON.stringify({ role, profileId })
         });
+        if (data.token) {
+            setAuthToken(data.token);
+        }
+        return data;
     },
     logout: async () => {
         try {

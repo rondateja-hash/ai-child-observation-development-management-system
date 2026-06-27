@@ -38,13 +38,13 @@ export default function App() {
     const [notificationsOpen, setNotificationsOpen] = useState(false);
     const [notifications, setNotifications] = useState([]);
     // Add Toast Utility
-    const addToast = (title, message, type = "success") => {
+    const addToast = React.useCallback((title, message, type = "success") => {
         const id = Math.random().toString(36).substring(2, 9);
         setToasts((prev) => [...prev, { id, title, message, type }]);
         setTimeout(() => {
             setToasts((prev) => prev.filter((t) => t.id !== id));
         }, 5000);
-    };
+    }, []);
     useEffect(() => {
         async function initSession() {
             try {

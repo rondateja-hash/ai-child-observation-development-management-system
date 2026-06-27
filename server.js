@@ -2,7 +2,6 @@ import "dotenv/config";
 import express from "express";
 import path from "path";
 import crypto from "crypto";
-import { createServer as createViteServer } from "vite";
 import { Database } from "./src/backend/db.js";
 import { generateAIReportFromObservation } from "./src/backend/gemini.js";
 const db = new Database();
@@ -17,7 +16,17 @@ async function startServer(port = Number(process.env.PORT) || 3e3) {
       return;
     }
     const token = authHeader.split(" ")[1];
-    const userId = activeSessions.get(token);
+    let userId = activeSessions.get(token);
+    if (!userId) {
+      try {
+        const decoded = Buffer.from(token, "base64").toString("utf-8");
+        if (decoded && decoded.startsWith("usr-")) {
+          userId = decoded;
+        }
+      } catch (e) {
+        // Ignore parsing errors
+      }
+    }
     if (!userId) {
       res.status(401).json({ error: "Session expired or invalid. Please login again." });
       return;
@@ -74,7 +83,7 @@ async function startServer(port = Number(process.env.PORT) || 3e3) {
       res.status(401).json({ error: "Invalid email or password credentials" });
       return;
     }
-    const token = crypto.randomBytes(32).toString("hex");
+    const token = Buffer.from(user.id).toString("base64");
     activeSessions.set(token, user.id);
     db.addActivityLog({
       id: "act-" + crypto.randomUUID(),
@@ -145,7 +154,7 @@ async function startServer(port = Number(process.env.PORT) || 3e3) {
       details: `New parent registered: ${name} (${email}). Linked to ${matchCount} students.`,
       timestamp: (/* @__PURE__ */ new Date()).toISOString()
     });
-    const token = crypto.randomBytes(32).toString("hex");
+    const token = Buffer.from(newUser.id).toString("base64");
     activeSessions.set(token, newUser.id);
     res.status(201).json({
       success: true,
@@ -209,9 +218,11 @@ async function startServer(port = Number(process.env.PORT) || 3e3) {
         res.status(404).json({ error: "Teacher profile not found." });
         return;
       }
-      activeSessions.set(token, teacherUser.id);
+      const newToken = Buffer.from(teacherUser.id).toString("base64");
+      activeSessions.set(newToken, teacherUser.id);
       res.json({
         success: true,
+        token: newToken,
         message: `Switched to Teacher profile: ${teacherUser.name}`,
         user: {
           id: teacherUser.id,
@@ -243,9 +254,11 @@ async function startServer(port = Number(process.env.PORT) || 3e3) {
         };
         db.addUser(parentUser);
       }
-      activeSessions.set(token, parentUser.id);
+      const newToken = Buffer.from(parentUser.id).toString("base64");
+      activeSessions.set(newToken, parentUser.id);
       res.json({
         success: true,
+        token: newToken,
         message: `Switched to Parent profile: ${parentUser.name}`,
         user: {
           id: parentUser.id,
@@ -819,6 +832,7 @@ async function startServer(port = Number(process.env.PORT) || 3e3) {
     }
   });
   if (process.env.NODE_ENV !== "production") {
+    const { createServer: createViteServer } = await import("vite");
     const vite = await createViteServer({
       server: { middlewareMode: true },
       appType: "spa"

@@ -2,7 +2,7 @@ export function getChildAvatar(gender, name) {
     if (gender) {
         const g = gender.toLowerCase().trim();
         if (g === 'female' || g === 'girl') {
-            return "https://images.unsplash.com/photo-1519689680058-324335c77ebe?w=150";
+            return "https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=150";
         }
     }
     if (name) {
@@ -15,7 +15,7 @@ export function getChildAvatar(gender, name) {
             lowerName.includes("ronda") ||
             lowerName.includes("sheela") ||
             lowerName.includes("anitha")) {
-            return "https://images.unsplash.com/photo-1519689680058-324335c77ebe?w=150";
+            return "https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=150";
         }
     }
     return "https://images.unsplash.com/photo-1503919545889-aef636e10ad4?w=150";

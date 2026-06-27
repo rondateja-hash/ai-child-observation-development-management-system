@@ -196,7 +196,8 @@ async function startServer(port = Number(process.env.PORT) || 3e3) {
       name: u.name,
       email: u.email,
       classroomId: u.classroomId,
-      avatar: u.avatar
+      avatar: u.avatar,
+      gender: u.gender
     }));
     const parents = db.getParents().map((p) => ({
       id: p.id,

@@ -78,12 +78,16 @@ export default function ProfileSelectorView({ user, onProfileSwitched, onCancel,
             setSwitching(null);
         }
     };
-    const getTeacherAvatar = (teacherName) => {
-        if (teacherName.includes("Priya"))
+    const getTeacherAvatar = (teacher) => {
+        if (teacher.avatar && !teacher.avatar.includes("default-avatar") && !teacher.avatar.includes("placeholder")) {
+            return teacher.avatar;
+        }
+        if (teacher.name.includes("Priya"))
             return "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150";
-        if (teacherName.includes("Sneha"))
+        if (teacher.name.includes("Sneha"))
             return "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150";
-        return getUserAvatar("Female", teacherName);
+        const gender = teacher.gender || "Female";
+        return getUserAvatar(gender, teacher.name);
     };
     return (<div className="min-h-screen bg-slate-50 flex items-center justify-center p-4 sm:p-6 md:p-8 font-sans">
       <div className="max-w-4xl w-full bg-white rounded-3xl border border-slate-200 shadow-2xl p-6 sm:p-10 relative overflow-hidden">
@@ -120,7 +124,7 @@ export default function ProfileSelectorView({ user, onProfileSwitched, onCancel,
                   {teachers.map((t) => {
                     const isCurrentSwitched = switching === t.id;
                     return (<motion.div key={t.id} whileHover={{ scale: 1.01, y: -2 }} className="p-5 border border-slate-200 hover:border-blue-400 bg-white rounded-2xl transition-all shadow-sm hover:shadow-md flex items-start gap-4 cursor-pointer relative group" onClick={() => !switching && handleSelectTeacher(t.id)}>
-                        <img src={getTeacherAvatar(t.name)} alt={t.name} className="h-14 w-14 rounded-xl object-cover bg-slate-100 border border-slate-200 shrink-0" referrerPolicy="no-referrer"/>
+                        <img src={getTeacherAvatar(t)} alt={t.name} className="h-14 w-14 rounded-xl object-cover bg-slate-100 border border-slate-200 shrink-0" referrerPolicy="no-referrer"/>
                         <div className="space-y-1.5 flex-1 min-w-0">
                           <span className="inline-flex items-center gap-1 text-[10px] font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded-full uppercase tracking-wider">
                             Classroom: {t.classroomId === "cls-toddlers" ? "Toddlers" : "Nursery"}

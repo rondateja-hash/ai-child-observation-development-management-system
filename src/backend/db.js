@@ -308,6 +308,26 @@ export class Database {
         avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150",
         phone: "+91 98765 43215",
         active: true
+      },
+      {
+        id: "usr-rondateja",
+        email: "rondateja@gmail.com",
+        passwordHash: "password123",
+        name: "Ronda Teja",
+        role: "Parent",
+        avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150",
+        phone: "+91 98765 43219",
+        active: true
+      },
+      {
+        id: "usr-tejasree",
+        email: "tejasree@gmail.com",
+        passwordHash: "password123",
+        name: "Teja Sree",
+        role: "Parent",
+        avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150",
+        phone: "+91 98765 43220",
+        active: true
       }
     ];
     const classrooms = [
@@ -395,13 +415,55 @@ export class Database {
         teacherId: "usr-teacher2",
         teacherName: "Sneha Rao",
         photo: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150"
+      },
+      {
+        id: "ch-teja-jr",
+        fullName: "Teja Jr",
+        dob: "2022-05-15",
+        age: 4,
+        gender: "Male",
+        bloodGroup: "O+",
+        parentName: "Ronda Teja",
+        parentPhone: "+91 98765 43219",
+        parentEmail: "rondateja@gmail.com",
+        address: "Hyderabad, Telangana",
+        allergies: "None",
+        medicalNotes: "Healthy active child",
+        emergencyContact: "Ronda Teja (Father) - +91 98765 43219",
+        classroomId: "cls-prep",
+        classroomName: "Kindergarten (Prep)",
+        teacherId: "usr-teacher1",
+        teacherName: "Priya Nair",
+        photo: "https://images.unsplash.com/photo-1519457431-44ccd64a579b?w=150"
+      },
+      {
+        id: "ch-sree-jr",
+        fullName: "Sree Jr",
+        dob: "2023-08-20",
+        age: 3,
+        gender: "Female",
+        bloodGroup: "A+",
+        parentName: "Teja Sree",
+        parentPhone: "+91 98765 43220",
+        parentEmail: "tejasree@gmail.com",
+        address: "Hyderabad, Telangana",
+        allergies: "None",
+        medicalNotes: "Healthy active child",
+        emergencyContact: "Teja Sree (Mother) - +91 98765 43220",
+        classroomId: "cls-nursery",
+        classroomName: "Nursery",
+        teacherId: "usr-teacher2",
+        teacherName: "Sneha Rao",
+        photo: ""
       }
     ];
     const parents = [
       { id: "pr-rajesh", fullName: "Rajesh Sharma", email: "parent@firstcry.com", phone: "+91 98765 43215", address: "Flat 402, Sunshine Heights, Koramangala, Bengaluru", relationship: "Father" },
       { id: "pr-karan", fullName: "Karan Patel", email: "karan.patel@gmail.com", phone: "+91 98123 45678", address: "Villa 12, Sobha Green Glen, Bellandur, Bengaluru", relationship: "Father" },
       { id: "pr-vikram", fullName: "Vikram Malhotra", email: "head@firstcry.com", phone: "+91 98765 43211", address: "Penthouse 3, Prestige Lake Ridge, Whitefield, Bengaluru", relationship: "Father" },
-      { id: "pr-debashis", fullName: "Debashis Sen", email: "debashis.sen@gmail.com", phone: "+91 99001 22334", address: "Apt 201, Shriram Blue, KR Puram, Bengaluru", relationship: "Father" }
+      { id: "pr-debashis", fullName: "Debashis Sen", email: "debashis.sen@gmail.com", phone: "+91 99001 22334", address: "Apt 201, Shriram Blue, KR Puram, Bengaluru", relationship: "Father" },
+      { id: "pr-rondateja", fullName: "Ronda Teja", email: "rondateja@gmail.com", phone: "+91 98765 43219", address: "Hyderabad, Telangana", relationship: "Father" },
+      { id: "pr-tejasree", fullName: "Teja Sree", email: "tejasree@gmail.com", phone: "+91 98765 43220", address: "Hyderabad, Telangana", relationship: "Mother" }
     ];
     const observations = [
       {

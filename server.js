@@ -70,6 +70,9 @@ async function startServer(port = Number(process.env.PORT) || 3e3) {
   };
   const isChildOfParent = (child, parentUser) => {
     if (!parentUser) return false;
+    if (child.parentId === parentUser.id || child.parent_id === parentUser.id) {
+      return true;
+    }
     if (parentUser.email && child.parentEmail) {
       if (parentUser.email.trim().toLowerCase() === child.parentEmail.trim().toLowerCase()) {
         return true;
@@ -173,6 +176,8 @@ async function startServer(port = Number(process.env.PORT) || 3e3) {
           c.parentName = name.trim();
           if (phone) c.parentPhone = phone;
           c.parentEmail = email.trim();
+          c.parentId = newUser.id;
+          c.parent_id = newUser.id;
           matchCount++;
         }
       });
@@ -413,6 +418,8 @@ async function startServer(port = Number(process.env.PORT) || 3e3) {
       return;
     }
     child.parentEmail = reqUser.email;
+    child.parentId = reqUser.id;
+    child.parent_id = reqUser.id;
     if (reqUser.phone) {
       child.parentPhone = reqUser.phone;
     }
@@ -443,6 +450,9 @@ async function startServer(port = Number(process.env.PORT) || 3e3) {
     const birthDate = new Date(dob);
     const age = (/* @__PURE__ */ new Date()).getFullYear() - birthDate.getFullYear();
     const assignedTeacher = db.getUsers().find((u) => u.role === "Teacher" && u.classroomId === classIdStr) || db.getUsers().find((u) => u.role === "Teacher");
+    const existingUser = parentEmail && parentEmail.trim()
+      ? db.getUsers().find((u) => u.email.toLowerCase() === parentEmail.trim().toLowerCase() && u.role === "Parent")
+      : null;
     const newChild = {
       id: "ch-" + crypto.randomBytes(6).toString("hex"),
       fullName,
@@ -453,6 +463,8 @@ async function startServer(port = Number(process.env.PORT) || 3e3) {
       parentName,
       parentPhone,
       parentEmail,
+      parentId: existingUser ? existingUser.id : "",
+      parent_id: existingUser ? existingUser.id : "",
       address,
       medicalNotes,
       allergies,
@@ -464,23 +476,6 @@ async function startServer(port = Number(process.env.PORT) || 3e3) {
       photo: gender === "Female" ? "https://images.unsplash.com/photo-1503919545889-aef636e10ad4?w=150" : "https://images.unsplash.com/photo-1519457431-44ccd64a579b?w=150"
     };
     db.addChild(newChild);
-    if (parentEmail && parentEmail.trim()) {
-      const existingUser = db.getUsers().find((u) => u.email.toLowerCase() === parentEmail.trim().toLowerCase());
-      if (!existingUser) {
-        const newParentUser = {
-          id: "usr-" + crypto.randomBytes(6).toString("hex"),
-          email: parentEmail.trim().toLowerCase(),
-          passwordHash: "parent123",
-          // Default password 'parent123'
-          name: parentName,
-          role: "Parent",
-          phone: parentPhone,
-          active: true,
-          avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150"
-        };
-        db.addUser(newParentUser);
-      }
-    }
     db.addActivityLog({
       id: "act-" + crypto.randomUUID(),
       userId: req.user.id,
@@ -496,6 +491,9 @@ async function startServer(port = Number(process.env.PORT) || 3e3) {
     const classroom = db.getClassrooms().find((cls) => cls.id === classroomId);
     const birthDate = dob ? new Date(dob) : null;
     const age = birthDate ? (/* @__PURE__ */ new Date()).getFullYear() - birthDate.getFullYear() : void 0;
+    const existingUser = parentEmail && parentEmail.trim()
+      ? db.getUsers().find((u) => u.email.toLowerCase() === parentEmail.trim().toLowerCase() && u.role === "Parent")
+      : null;
     const updateParams = {
       fullName,
       dob,
@@ -504,6 +502,8 @@ async function startServer(port = Number(process.env.PORT) || 3e3) {
       parentName,
       parentPhone,
       parentEmail,
+      parentId: existingUser ? existingUser.id : "",
+      parent_id: existingUser ? existingUser.id : "",
       address,
       medicalNotes,
       allergies,
@@ -518,23 +518,6 @@ async function startServer(port = Number(process.env.PORT) || 3e3) {
     if (!updated) {
       res.status(404).json({ error: "Child record not found" });
       return;
-    }
-    if (parentEmail && parentEmail.trim()) {
-      const existingUser = db.getUsers().find((u) => u.email.toLowerCase() === parentEmail.trim().toLowerCase());
-      if (!existingUser) {
-        const newParentUser = {
-          id: "usr-" + crypto.randomBytes(6).toString("hex"),
-          email: parentEmail.trim().toLowerCase(),
-          passwordHash: "parent123",
-          // Default password 'parent123'
-          name: parentName || updated.parentName,
-          role: "Parent",
-          phone: parentPhone || updated.parentPhone,
-          active: true,
-          avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150"
-        };
-        db.addUser(newParentUser);
-      }
     }
     res.json(updated);
   });

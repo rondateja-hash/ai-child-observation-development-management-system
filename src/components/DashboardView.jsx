@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import { api } from "../services/api";
 import { motion } from "motion/react";
 import { Users, BookOpen, Sparkles, Clock, Calendar, CheckSquare, ShieldCheck, TrendingUp } from "lucide-react";
-export default function DashboardView({ user, addToast, setActiveTab }) {
+export default function DashboardView({ user, addToast, setActiveTab, selectedChildId }) {
     const [stats, setStats] = useState(null);
     const [loading, setLoading] = useState(true);
     useEffect(() => {
         async function loadStats() {
             try {
+                setLoading(true);
                 const data = await api.getDashboardStats();
                 setStats(data);
             }
@@ -19,7 +20,7 @@ export default function DashboardView({ user, addToast, setActiveTab }) {
             }
         }
         loadStats();
-    }, []);
+    }, [selectedChildId]);
     if (loading) {
         return (<div className="space-y-6 animate-pulse">
         <div className="h-10 bg-slate-200 rounded-lg w-1/4"></div>

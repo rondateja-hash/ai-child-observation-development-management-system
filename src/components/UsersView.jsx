@@ -10,6 +10,7 @@ export default function UsersView({ user, addToast }) {
     // Search/Filters states
     const [searchQuery, setSearchQuery] = useState("");
     const [selectedRole, setSelectedRole] = useState("all");
+    const [activeDirectoryTab, setActiveDirectoryTab] = useState("staff");
     // Detail / Form States
     const [isAddOpen, setIsAddOpen] = useState(false);
     const [editingUser, setEditingUser] = useState(null);
@@ -45,7 +46,7 @@ export default function UsersView({ user, addToast }) {
             name: "",
             email: "",
             password: "",
-            role: "Teacher",
+            role: activeDirectoryTab === "parents" ? "Parent" : "Teacher",
             phone: "",
             classroomId: classrooms[0]?.id || "",
             active: true,
@@ -117,22 +118,33 @@ export default function UsersView({ user, addToast }) {
     };
     // Filter list
     const filteredUsers = users.filter(u => {
+        const matchesTab = activeDirectoryTab === "parents" ? u.role === "Parent" : u.role !== "Parent";
         const matchesSearch = u.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
             u.email.toLowerCase().includes(searchQuery.toLowerCase());
         const matchesRole = selectedRole === "all" || u.role === selectedRole;
-        return matchesSearch && matchesRole;
+        return matchesTab && matchesSearch && matchesRole;
     });
     return (<div className="space-y-6 font-sans">
       {/* Header and Add button */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <h1 className="font-display text-2xl font-bold tracking-tight text-slate-900">Staff & Users Directory</h1>
-          <p className="text-slate-500 text-sm mt-1">Manage instructors, administrators, pediatric consultants, and role permissions.</p>
+          <p className="text-slate-500 text-sm mt-1">Manage school instructors, registered parent guardians, and system permissions.</p>
         </div>
         {(user.role === "Super Admin" || user.role === "Centre Head" || user.role === "Centre Admin") && (<button onClick={handleOpenAdd} className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white font-medium rounded-md shadow-sm transition-all text-sm self-start sm:self-auto">
             <Plus className="h-4.5 w-4.5"/>
-            <span>Add Staff Profile</span>
+            <span>{activeDirectoryTab === "parents" ? "Add Parent Profile" : "Add Staff Profile"}</span>
           </button>)}
+      </div>
+
+      {/* Tabs */}
+      <div className="flex border-b border-slate-200">
+        <button onClick={() => { setActiveDirectoryTab("staff"); setSelectedRole("all"); }} className={`px-5 py-2.5 border-b-2 text-sm font-semibold transition-all ${activeDirectoryTab === "staff" ? "border-blue-600 text-blue-600 font-bold" : "border-transparent text-slate-500 hover:text-slate-700"}`}>
+          School Staff
+        </button>
+        <button onClick={() => { setActiveDirectoryTab("parents"); setSelectedRole("all"); }} className={`px-5 py-2.5 border-b-2 text-sm font-semibold transition-all ${activeDirectoryTab === "parents" ? "border-blue-600 text-blue-600 font-bold" : "border-transparent text-slate-500 hover:text-slate-700"}`}>
+          Registered Parents
+        </button>
       </div>
 
       {/* Filter and Search */}
@@ -141,17 +153,19 @@ export default function UsersView({ user, addToast }) {
           <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
             <Search className="h-5 w-5"/>
           </div>
-          <input type="text" placeholder="Search users directory by name or email address..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className="block w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-lg text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/15 focus:border-blue-500 transition-all text-sm"/>
+          <input type="text" placeholder={activeDirectoryTab === "parents" ? "Search parents by name or email address..." : "Search staff directory by name or email..."} value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className="block w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-lg text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/15 focus:border-blue-500 transition-all text-sm"/>
         </div>
 
-        <div className="flex items-center gap-1.5 bg-slate-50 border border-slate-200 px-3 py-2 rounded-lg text-xs font-semibold text-slate-600 w-full md:w-auto self-start sm:self-auto">
-          <Filter className="h-3.5 w-3.5"/>
-          <span>Role Filter:</span>
-          <select value={selectedRole} onChange={(e) => setSelectedRole(e.target.value)} className="bg-transparent focus:outline-none cursor-pointer">
-            <option value="all">All Roles</option>
-            {ROLES.map(r => (<option key={r} value={r}>{r}</option>))}
-          </select>
-        </div>
+        {activeDirectoryTab === "staff" && (
+          <div className="flex items-center gap-1.5 bg-slate-50 border border-slate-200 px-3 py-2 rounded-lg text-xs font-semibold text-slate-600 w-full md:w-auto self-start sm:self-auto">
+            <Filter className="h-3.5 w-3.5"/>
+            <span>Role Filter:</span>
+            <select value={selectedRole} onChange={(e) => setSelectedRole(e.target.value)} className="bg-transparent focus:outline-none cursor-pointer">
+              <option value="all">All Roles</option>
+              {ROLES.filter(r => r !== "Parent").map(r => (<option key={r} value={r}>{r}</option>))}
+            </select>
+          </div>
+        )}
       </div>
 
       {/* Directory Cards List */}
@@ -192,7 +206,7 @@ export default function UsersView({ user, addToast }) {
                 <div className="flex items-center gap-1">
                   <UserCheck className={`h-4 w-4 ${u.active !== false ? "text-emerald-500" : "text-slate-400"}`}/>
                   <span className={u.active !== false ? "text-emerald-600 font-bold" : "text-slate-500 font-bold"}>
-                    {u.active !== false ? "Active Staff" : "Suspended"}
+                    {u.role === "Parent" ? (u.active !== false ? "Active Parent" : "Suspended") : (u.active !== false ? "Active Staff" : "Suspended")}
                   </span>
                 </div>
 
@@ -222,7 +236,7 @@ export default function UsersView({ user, addToast }) {
             <motion.div initial={{ opacity: 0, scale: 0.95, y: 15 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.95, y: 15 }} className="relative bg-white rounded-xl shadow-xl w-full max-w-lg overflow-hidden z-10 font-sans border border-slate-200">
               <div className="flex items-center justify-between p-6 border-b border-slate-200">
                 <h2 className="font-display font-bold text-xl text-slate-900">
-                  {editingUser ? "Edit Staff Member" : "Create Staff Account"}
+                  {editingUser ? (activeDirectoryTab === "parents" ? "Edit Parent Profile" : "Edit Staff Member") : (activeDirectoryTab === "parents" ? "Create Parent Account" : "Create Staff Account")}
                 </h2>
                 <button onClick={() => setIsAddOpen(false)} className="p-1.5 hover:bg-slate-100 rounded-full text-slate-400 hover:text-slate-600 transition-colors">
                   <X className="h-5 w-5"/>
@@ -255,7 +269,11 @@ export default function UsersView({ user, addToast }) {
                   <div>
                     <label className="block text-xs font-semibold text-slate-600 mb-1">System Role *</label>
                     <select value={formData.role} onChange={(e) => setFormData({ ...formData, role: e.target.value })} className="block w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500/15 focus:border-blue-500 text-sm">
-                      {ROLES.map(r => (<option key={r} value={r}>{r}</option>))}
+                      {activeDirectoryTab === "parents" ? (
+                        <option value="Parent">Parent</option>
+                      ) : (
+                        ROLES.filter(r => r !== "Parent").map(r => (<option key={r} value={r}>{r}</option>))
+                      )}
                     </select>
                   </div>
 

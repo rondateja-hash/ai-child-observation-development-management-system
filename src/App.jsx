@@ -585,6 +585,11 @@ export default function App() {
                         {linkLoading ? "Searching records..." : "Securely Link Profile"}
                       </button>
                     </form>
+                    <div className="mt-4 pt-3 border-t border-slate-100 flex justify-center">
+                      <button type="button" onClick={handleLogout} className="text-xs font-semibold text-slate-500 hover:text-red-600 transition-colors flex items-center gap-1 cursor-pointer">
+                        ← Wrong account? Sign Out
+                      </button>
+                    </div>
                   </div>) : (<>
                     {/* Render filtered children */}
                     {(() => {
@@ -707,9 +712,14 @@ export default function App() {
                 <span>Child Observation Portal</span>
                 {selectedChildId ? (<button onClick={() => setChildSelectorOpen(false)} className="px-4 py-1.5 bg-slate-200 text-slate-700 rounded-lg hover:bg-slate-300 transition-all font-semibold cursor-pointer">
                     Cancel
-                  </button>) : (<div className="flex items-center gap-2">
-                    <span className="h-2 w-2 bg-amber-500 rounded-full animate-ping"></span>
-                    <span className="text-amber-600 font-semibold">Please select a student to start</span>
+                  </button>) : (<div className="flex items-center gap-4">
+                    <button onClick={handleLogout} className="px-4 py-1.5 bg-red-50 text-red-600 border border-red-200 rounded-lg hover:bg-red-100 transition-all font-semibold cursor-pointer">
+                      Sign Out
+                    </button>
+                    <div className="flex items-center gap-2">
+                      <span className="h-2 w-2 bg-amber-500 rounded-full animate-ping"></span>
+                      <span className="text-amber-600 font-semibold">Please select a student to start</span>
+                    </div>
                   </div>)}
               </div>
             </motion.div>

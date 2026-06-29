@@ -328,6 +328,40 @@ export class Database {
         avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150",
         phone: "+91 98765 43220",
         active: true
+      },
+      {
+        id: "usr-af6b1a4897b9",
+        email: "rishi@gmail.com",
+        passwordHash: "parent123",
+        name: "Harika",
+        role: "Parent",
+        phone: "7995001537",
+        active: true,
+        avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150"
+      },
+      {
+        id: "usr-829af6365aaa",
+        email: "akshayakumari612@gmail.com",
+        passwordHash: "12345",
+        name: "Akshaya kumari",
+        role: "Teacher",
+        phone: "9182355435",
+        classroomId: "cls-prep",
+        avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150",
+        active: true,
+        gender: "Female"
+      },
+      {
+        id: "usr-9fe9cf955f5e",
+        email: "Shiva@gmail.com",
+        passwordHash: "23456",
+        name: "Shiva Ram",
+        role: "Teacher",
+        phone: "2456789764",
+        classroomId: "cls-prep",
+        avatar: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150",
+        active: true,
+        gender: "Male"
       }
     ];
     const classrooms = [
@@ -460,7 +494,29 @@ export class Database {
         classroomName: "Nursery",
         teacherId: "usr-teacher2",
         teacherName: "Sneha Rao",
-        photo: ""
+        photo: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150"
+      },
+      {
+        id: "ch-b0d34e03637e",
+        fullName: "Rishi",
+        dob: "2026-06-27",
+        age: 3,
+        gender: "Male",
+        bloodGroup: "O+",
+        parentName: "Harika",
+        parentPhone: "7995001537",
+        parentEmail: "rishi@gmail.com",
+        parentId: "usr-af6b1a4897b9",
+        parent_id: "usr-af6b1a4897b9",
+        address: "chirala, andhrapradesh",
+        medicalNotes: "no",
+        allergies: "no",
+        emergencyContact: "123456789",
+        classroomId: "cls-prep",
+        classroomName: "Kindergarten (Prep)",
+        teacherId: "usr-teacher1",
+        teacherName: "Priya Nair",
+        photo: "https://images.unsplash.com/photo-1519457431-44ccd64a579b?w=150"
       }
     ];
     const parents = [
@@ -469,7 +525,8 @@ export class Database {
       { id: "pr-vikram", fullName: "Vikram Malhotra", email: "head@firstcry.com", phone: "+91 98765 43211", address: "Penthouse 3, Prestige Lake Ridge, Whitefield, Bengaluru", relationship: "Father" },
       { id: "pr-debashis", fullName: "Debashis Sen", email: "debashis.sen@gmail.com", phone: "+91 99001 22334", address: "Apt 201, Shriram Blue, KR Puram, Bengaluru", relationship: "Father" },
       { id: "pr-rondateja", fullName: "Ronda Teja", email: "rondateja@gmail.com", phone: "+91 98765 43219", address: "Hyderabad, Telangana", relationship: "Father" },
-      { id: "pr-tejasree", fullName: "Teja Sree", email: "tejasree@gmail.com", phone: "+91 98765 43220", address: "Hyderabad, Telangana", relationship: "Mother" }
+      { id: "pr-tejasree", fullName: "Teja Sree", email: "tejasree@gmail.com", phone: "+91 98765 43220", address: "Hyderabad, Telangana", relationship: "Mother" },
+      { id: "pr-harika", fullName: "Harika", email: "rishi@gmail.com", phone: "7995001537", address: "chirala, andhrapradesh", relationship: "Mother" }
     ];
     const observations = [
       {

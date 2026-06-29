@@ -1,14 +1,54 @@
 import fs from "fs";
 import path from "path";
+import pg from "pg";
+const { Pool } = pg;
 const DATA_DIR = path.join(process.cwd(), "data");
 const DB_FILE = path.join(DATA_DIR, "db.json");
 export class Database {
   data;
+  pgPool = null;
   constructor() {
     this.data = this.getInitialData();
-    this.init();
   }
-  init() {
+  initPool() {
+    if (process.env.DATABASE_URL && !this.pgPool) {
+      try {
+        this.pgPool = new Pool({
+          connectionString: process.env.DATABASE_URL,
+          ssl: { rejectUnauthorized: false }
+        });
+        console.log("Database: PostgreSQL pool initialized successfully.");
+      } catch (e) {
+        console.error("Database: Failed to initialize PostgreSQL pool:", e);
+      }
+    }
+  }
+  async init() {
+    this.initPool();
+    if (this.pgPool) {
+      try {
+        await this.pgPool.query(`
+          CREATE TABLE IF NOT EXISTS json_db_store (
+            id INT PRIMARY KEY,
+            data JSONB NOT NULL
+          )
+        `);
+        const res = await this.pgPool.query("SELECT data FROM json_db_store WHERE id = 1");
+        if (res.rows.length > 0) {
+          this.data = res.rows[0].data;
+          console.log("Database: Loaded data successfully from PostgreSQL.");
+          return;
+        } else {
+          const initialData = this.getInitialData();
+          await this.pgPool.query("INSERT INTO json_db_store (id, data) VALUES (1, $1)", [JSON.stringify(initialData)]);
+          this.data = initialData;
+          console.log("Database: Seeded initial data successfully into PostgreSQL.");
+          return;
+        }
+      } catch (e) {
+        console.error("Database: PostgreSQL query failed, falling back to local file:", e);
+      }
+    }
     try {
       if (!fs.existsSync(DATA_DIR)) {
         fs.mkdirSync(DATA_DIR, { recursive: true });
@@ -24,10 +64,15 @@ export class Database {
     }
   }
   save() {
+    if (this.pgPool) {
+      this.pgPool.query("UPDATE json_db_store SET data = $1 WHERE id = 1", [JSON.stringify(this.data)])
+        .then(() => console.log("Database: Synced state to PostgreSQL."))
+        .catch((e) => console.error("Database: Failed to sync state to PostgreSQL:", e));
+    }
     try {
       fs.writeFileSync(DB_FILE, JSON.stringify(this.data, null, 2), "utf-8");
     } catch (e) {
-      console.error("Failed to write to database file", e);
+      // Silent on EROFS
     }
   }
   // Getters

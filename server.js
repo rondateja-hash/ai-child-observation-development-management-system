@@ -7,6 +7,7 @@ import { generateAIReportFromObservation } from "./src/backend/gemini.js";
 const db = new Database();
 const activeSessions = /* @__PURE__ */ new Map();
 async function startServer(port = Number(process.env.PORT) || 3e3) {
+  await db.init();
   const app = express();
   app.use(express.json({ limit: "10mb" }));
   const authenticate = (req, res, next) => {

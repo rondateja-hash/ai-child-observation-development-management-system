@@ -63,11 +63,14 @@ export class Database {
       console.error("Database file initialization failed, using in-memory store:", e);
     }
   }
-  save() {
+  async save() {
     if (this.pgPool) {
-      this.pgPool.query("UPDATE json_db_store SET data = $1 WHERE id = 1", [JSON.stringify(this.data)])
-        .then(() => console.log("Database: Synced state to PostgreSQL."))
-        .catch((e) => console.error("Database: Failed to sync state to PostgreSQL:", e));
+      try {
+        await this.pgPool.query("UPDATE json_db_store SET data = $1 WHERE id = 1", [JSON.stringify(this.data)]);
+        console.log("Database: Synced state to PostgreSQL.");
+      } catch (e) {
+        console.error("Database: Failed to sync state to PostgreSQL:", e);
+      }
     }
     try {
       fs.writeFileSync(DB_FILE, JSON.stringify(this.data, null, 2), "utf-8");
@@ -145,74 +148,74 @@ export class Database {
     return this.data.settings;
   }
   // Setters/CRUD Operations
-  addUser(user) {
+  async addUser(user) {
     this.data.users.push(user);
-    this.save();
+    await this.save();
     return user;
   }
-  updateUser(id, updated) {
+  async updateUser(id, updated) {
     const idx = this.data.users.findIndex((u) => u.id === id);
     if (idx !== -1) {
       this.data.users[idx] = { ...this.data.users[idx], ...updated };
-      this.save();
+      await this.save();
       return this.data.users[idx];
     }
     return null;
   }
-  deleteUser(id) {
+  async deleteUser(id) {
     this.data.users = this.data.users.filter((u) => u.id !== id);
-    this.save();
+    await this.save();
   }
-  addChild(child) {
+  async addChild(child) {
     this.data.children.push(child);
-    this.save();
+    await this.save();
     return child;
   }
-  updateChild(id, updated) {
+  async updateChild(id, updated) {
     const idx = this.data.children.findIndex((c) => c.id === id);
     if (idx !== -1) {
       this.data.children[idx] = { ...this.data.children[idx], ...updated };
-      this.save();
+      await this.save();
       return this.data.children[idx];
     }
     return null;
   }
-  deleteChild(id) {
+  async deleteChild(id) {
     this.data.children = this.data.children.filter((c) => c.id !== id);
     this.data.attendance = this.data.attendance.filter((a) => a.childId !== id);
     this.data.observations = this.data.observations.filter((o) => o.childId !== id);
     this.data.aiReports = this.data.aiReports.filter((r) => r.childId !== id);
-    this.save();
+    await this.save();
   }
-  addObservation(obs) {
+  async addObservation(obs) {
     this.data.observations.push(obs);
-    this.save();
+    await this.save();
     return obs;
   }
-  updateObservation(id, updated) {
+  async updateObservation(id, updated) {
     const idx = this.data.observations.findIndex((o) => o.id === id);
     if (idx !== -1) {
       this.data.observations[idx] = { ...this.data.observations[idx], ...updated };
-      this.save();
+      await this.save();
       return this.data.observations[idx];
     }
     return null;
   }
-  deleteObservation(id) {
+  async deleteObservation(id) {
     this.data.observations = this.data.observations.filter((o) => o.id !== id);
     this.data.aiReports = this.data.aiReports.filter((r) => r.observationId !== id);
-    this.save();
+    await this.save();
   }
-  addAIReport(report) {
+  async addAIReport(report) {
     this.data.aiReports.push(report);
-    this.save();
+    await this.save();
     return report;
   }
-  deleteAIReport(id) {
+  async deleteAIReport(id) {
     this.data.aiReports = this.data.aiReports.filter((r) => r.id !== id);
-    this.save();
+    await this.save();
   }
-  setAttendance(records) {
+  async setAttendance(records) {
     for (const rec of records) {
       const idx = this.data.attendance.findIndex((a) => a.childId === rec.childId && a.date === rec.date);
       if (idx !== -1) {
@@ -221,28 +224,28 @@ export class Database {
         this.data.attendance.push(rec);
       }
     }
-    this.save();
+    await this.save();
   }
-  addNotification(notif) {
+  async addNotification(notif) {
     this.data.notifications.unshift(notif);
     if (this.data.notifications.length > 100) {
       this.data.notifications.pop();
     }
-    this.save();
+    await this.save();
     return notif;
   }
-  markNotificationAsRead(id) {
+  async markNotificationAsRead(id) {
     const idx = this.data.notifications.findIndex((n) => n.id === id);
     if (idx !== -1) {
       this.data.notifications[idx].isRead = true;
-      this.save();
+      await this.save();
     }
   }
-  markAllNotificationsAsRead(userId) {
+  async markAllNotificationsAsRead(userId) {
     this.data.notifications = this.data.notifications.map((n) => n.userId === userId ? { ...n, isRead: true } : n);
-    this.save();
+    await this.save();
   }
-  deleteNotification(id, userId, role) {
+  async deleteNotification(id, userId, role) {
     const prevLength = this.data.notifications.length;
     this.data.notifications = this.data.notifications.filter((n) => {
       if (n.id === id) {
@@ -254,30 +257,30 @@ export class Database {
     });
     const changed = this.data.notifications.length !== prevLength;
     if (changed) {
-      this.save();
+      await this.save();
     }
     return changed;
   }
-  clearAllNotifications(userId, role) {
+  async clearAllNotifications(userId, role) {
     this.data.notifications = this.data.notifications.filter((n) => {
       if (role === "Super Admin" || role === "Centre Head" || n.userId === userId) {
         return false;
       }
       return true;
     });
-    this.save();
+    await this.save();
   }
-  addActivityLog(log) {
+  async addActivityLog(log) {
     this.data.activityLogs.unshift(log);
     if (this.data.activityLogs.length > 200) {
       this.data.activityLogs.pop();
     }
-    this.save();
+    await this.save();
     return log;
   }
-  updateSettings(settings) {
+  async updateSettings(settings) {
     this.data.settings = { ...this.data.settings, ...settings };
-    this.save();
+    await this.save();
     return this.data.settings;
   }
   // Seeding Default High-Quality Data

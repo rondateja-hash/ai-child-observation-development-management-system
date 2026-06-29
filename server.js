@@ -101,7 +101,7 @@ async function startServer(port = Number(process.env.PORT) || 3e3) {
     }
     return false;
   };
-  app.post("/api/auth/login", (req, res) => {
+  app.post("/api/auth/login", async (req, res) => {
     const { email, password } = req.body;
     if (!email || !password) {
       res.status(400).json({ error: "Email and password are required" });
@@ -114,7 +114,7 @@ async function startServer(port = Number(process.env.PORT) || 3e3) {
     }
     const token = Buffer.from(`${user.id}|${user.email}|${user.name}|${user.role}|${user.classroomId || ""}`).toString("base64");
     activeSessions.set(token, user.id);
-    db.addActivityLog({
+    await db.addActivityLog({
       id: "act-" + crypto.randomUUID(),
       userId: user.id,
       userName: user.name,
@@ -135,7 +135,7 @@ async function startServer(port = Number(process.env.PORT) || 3e3) {
       }
     });
   });
-  app.post("/api/auth/register", (req, res) => {
+  app.post("/api/auth/register", async (req, res) => {
     const { name, email, password, phone, gender, role, classroomId } = req.body;
     if (!name || !email || !password) {
       res.status(400).json({ error: "Name, email, and password are required." });
@@ -165,7 +165,7 @@ async function startServer(port = Number(process.env.PORT) || 3e3) {
         ? "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150"
         : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150"
     };
-    db.addUser(newUser);
+    await db.addUser(newUser);
     
     let matchCount = 0;
     if (userRole === "Parent") {
@@ -183,10 +183,10 @@ async function startServer(port = Number(process.env.PORT) || 3e3) {
         }
       });
       if (matchCount > 0) {
-        db.save();
+        await db.save();
       }
     }
-    db.addActivityLog({
+    await db.addActivityLog({
       id: "act-" + crypto.randomUUID(),
       userId: newUser.id,
       userName: newUser.name,
@@ -251,7 +251,7 @@ async function startServer(port = Number(process.env.PORT) || 3e3) {
     }));
     res.json({ teachers, parents });
   });
-  app.post("/api/auth/switch-profile", authenticate, (req, res) => {
+  app.post("/api/auth/switch-profile", authenticate, async (req, res) => {
     const authHeader = req.headers.authorization;
     const token = authHeader.split(" ")[1];
     const { role, profileId } = req.body;
@@ -295,7 +295,7 @@ async function startServer(port = Number(process.env.PORT) || 3e3) {
           active: true,
           avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150"
         };
-        db.addUser(parentUser);
+        await db.addUser(parentUser);
       }
       const newToken = Buffer.from(`${parentUser.id}|${parentUser.email}|${parentUser.name}|${parentUser.role}|${parentUser.classroomId || ""}`).toString("base64");
       activeSessions.set(newToken, parentUser.id);
@@ -330,7 +330,7 @@ async function startServer(port = Number(process.env.PORT) || 3e3) {
     }));
     res.json(users);
   });
-  app.post("/api/users", authenticate, (req, res) => {
+  app.post("/api/users", authenticate, async (req, res) => {
     const { name, email, password, role, phone, classroomId, avatar, gender } = req.body;
     if (!name || !email || !password || !role) {
       res.status(400).json({ error: "Name, email, password, and role are required." });
@@ -355,8 +355,8 @@ async function startServer(port = Number(process.env.PORT) || 3e3) {
       active: true,
       gender: gender || ""
     };
-    db.addUser(newUser);
-    db.addActivityLog({
+    await db.addUser(newUser);
+    await db.addActivityLog({
       id: "act-" + crypto.randomUUID(),
       userId: req.user.id,
       userName: req.user.name,
@@ -366,9 +366,9 @@ async function startServer(port = Number(process.env.PORT) || 3e3) {
     });
     res.status(201).json(newUser);
   });
-  app.put("/api/users/:id", authenticate, (req, res) => {
+  app.put("/api/users/:id", authenticate, async (req, res) => {
     const { name, email, role, phone, classroomId, active, avatar, gender } = req.body;
-    const updated = db.updateUser(req.params.id, {
+    const updated = await db.updateUser(req.params.id, {
       name,
       email,
       role,
@@ -384,8 +384,8 @@ async function startServer(port = Number(process.env.PORT) || 3e3) {
     }
     res.json(updated);
   });
-  app.delete("/api/users/:id", authenticate, (req, res) => {
-    db.deleteUser(req.params.id);
+  app.delete("/api/users/:id", authenticate, async (req, res) => {
+    await db.deleteUser(req.params.id);
     res.json({ success: true, message: "User deleted successfully" });
   });
   app.get("/api/children", authenticate, (req, res) => {
@@ -399,7 +399,7 @@ async function startServer(port = Number(process.env.PORT) || 3e3) {
     }
     res.json(children);
   });
-  app.post("/api/children/link", authenticate, (req, res) => {
+  app.post("/api/children/link", authenticate, async (req, res) => {
     const reqUser = req.user;
     if (reqUser.role !== "Parent") {
       res.status(403).json({ error: "Only parents can link/claim children profiles." });
@@ -428,8 +428,8 @@ async function startServer(port = Number(process.env.PORT) || 3e3) {
     if (!child.emergencyContact || child.emergencyContact.includes("Rajesh Sharma")) {
       child.emergencyContact = `${reqUser.name} (Parent) - ${reqUser.phone || ""}`;
     }
-    db.save();
-    db.addActivityLog({
+    await db.save();
+    await db.addActivityLog({
       id: "act-" + crypto.randomUUID(),
       userId: reqUser.id,
       userName: reqUser.name,
@@ -439,7 +439,7 @@ async function startServer(port = Number(process.env.PORT) || 3e3) {
     });
     res.json({ success: true, message: `Successfully linked ${child.fullName} to your account!`, child });
   });
-  app.post("/api/children", authenticate, (req, res) => {
+  app.post("/api/children", authenticate, async (req, res) => {
     const { fullName, dob, gender, bloodGroup, parentName, parentPhone, parentEmail, address, medicalNotes, allergies, emergencyContact, classroomId } = req.body;
     if (!fullName || !dob || !gender || !parentName || !parentPhone || !classroomId) {
       res.status(400).json({ error: "Missing required children attributes." });
@@ -476,8 +476,8 @@ async function startServer(port = Number(process.env.PORT) || 3e3) {
       teacherName: assignedTeacher ? assignedTeacher.name : "Priya Nair",
       photo: gender === "Female" ? "https://images.unsplash.com/photo-1503919545889-aef636e10ad4?w=150" : "https://images.unsplash.com/photo-1519457431-44ccd64a579b?w=150"
     };
-    db.addChild(newChild);
-    db.addActivityLog({
+    await db.addChild(newChild);
+    await db.addActivityLog({
       id: "act-" + crypto.randomUUID(),
       userId: req.user.id,
       userName: req.user.name,
@@ -487,7 +487,7 @@ async function startServer(port = Number(process.env.PORT) || 3e3) {
     });
     res.status(201).json(newChild);
   });
-  app.put("/api/children/:id", authenticate, (req, res) => {
+  app.put("/api/children/:id", authenticate, async (req, res) => {
     const { fullName, dob, gender, bloodGroup, parentName, parentPhone, parentEmail, address, medicalNotes, allergies, emergencyContact, classroomId } = req.body;
     const classroom = db.getClassrooms().find((cls) => cls.id === classroomId);
     const birthDate = dob ? new Date(dob) : null;
@@ -515,15 +515,15 @@ async function startServer(port = Number(process.env.PORT) || 3e3) {
     if (age !== void 0) {
       updateParams.age = age || 3;
     }
-    const updated = db.updateChild(req.params.id, updateParams);
+    const updated = await db.updateChild(req.params.id, updateParams);
     if (!updated) {
       res.status(404).json({ error: "Child record not found" });
       return;
     }
     res.json(updated);
   });
-  app.delete("/api/children/:id", authenticate, (req, res) => {
-    db.deleteChild(req.params.id);
+  app.delete("/api/children/:id", authenticate, async (req, res) => {
+    await db.deleteChild(req.params.id);
     res.json({ success: true, message: "Child deleted successfully" });
   });
   app.get("/api/observations", authenticate, (req, res) => {
@@ -540,7 +540,7 @@ async function startServer(port = Number(process.env.PORT) || 3e3) {
     }
     res.json(obs);
   });
-  app.post("/api/observations", authenticate, (req, res) => {
+  app.post("/api/observations", authenticate, async (req, res) => {
     const { childId, category, note, riskLevel } = req.body;
     const user = req.user;
     if (!childId || !category || !note) {
@@ -565,10 +565,11 @@ async function startServer(port = Number(process.env.PORT) || 3e3) {
       riskLevel: riskLevel || "Low",
       status: "Pending"
     };
-    db.addObservation(newObs);
+    await db.addObservation(newObs);
     if (newObs.riskLevel !== "Low") {
-      db.getUsers().filter((u) => u.role === "Centre Head" || u.role === "Super Admin").forEach((admin) => {
-        db.addNotification({
+      const admins = db.getUsers().filter((u) => u.role === "Centre Head" || u.role === "Super Admin");
+      for (const admin of admins) {
+        await db.addNotification({
           id: "notif-" + crypto.randomUUID(),
           userId: admin.id,
           title: `Action Required: ${newObs.riskLevel} Risk Observation`,
@@ -577,9 +578,9 @@ async function startServer(port = Number(process.env.PORT) || 3e3) {
           isRead: false,
           timestamp: (/* @__PURE__ */ new Date()).toISOString()
         });
-      });
+      }
     }
-    db.addActivityLog({
+    await db.addActivityLog({
       id: "act-" + crypto.randomUUID(),
       userId: user.id,
       userName: user.name,
@@ -589,17 +590,17 @@ async function startServer(port = Number(process.env.PORT) || 3e3) {
     });
     res.status(201).json(newObs);
   });
-  app.put("/api/observations/:id", authenticate, (req, res) => {
+  app.put("/api/observations/:id", authenticate, async (req, res) => {
     const { category, note, riskLevel, status } = req.body;
-    const updated = db.updateObservation(req.params.id, { category, note, riskLevel, status });
+    const updated = await db.updateObservation(req.params.id, { category, note, riskLevel, status });
     if (!updated) {
       res.status(404).json({ error: "Observation not found" });
       return;
     }
     res.json(updated);
   });
-  app.delete("/api/observations/:id", authenticate, (req, res) => {
-    db.deleteObservation(req.params.id);
+  app.delete("/api/observations/:id", authenticate, async (req, res) => {
+    await db.deleteObservation(req.params.id);
     res.json({ success: true, message: "Observation deleted successfully" });
   });
   app.get("/api/ai/reports", authenticate, (req, res) => {
@@ -658,9 +659,9 @@ async function startServer(port = Number(process.env.PORT) || 3e3) {
         dateGenerated: (/* @__PURE__ */ new Date()).toISOString().split("T")[0],
         generatedBy: user.name
       };
-      db.addAIReport(newReport);
-      db.updateObservation(observationId, { status: "Analyzed" });
-      db.addNotification({
+      await db.addAIReport(newReport);
+      await db.updateObservation(observationId, { status: "Analyzed" });
+      await db.addNotification({
         id: "notif-" + crypto.randomUUID(),
         userId: user.id,
         title: "AI Report Generated",
@@ -669,7 +670,7 @@ async function startServer(port = Number(process.env.PORT) || 3e3) {
         isRead: false,
         timestamp: (/* @__PURE__ */ new Date()).toISOString()
       });
-      db.addActivityLog({
+      await db.addActivityLog({
         id: "act-" + crypto.randomUUID(),
         userId: user.id,
         userName: user.name,
@@ -682,8 +683,8 @@ async function startServer(port = Number(process.env.PORT) || 3e3) {
       res.status(500).json({ error: "Failed to generate AI report: " + e.message });
     }
   });
-  app.delete("/api/ai/reports/:id", authenticate, (req, res) => {
-    db.deleteAIReport(req.params.id);
+  app.delete("/api/ai/reports/:id", authenticate, async (req, res) => {
+    await db.deleteAIReport(req.params.id);
     res.json({ success: true, message: "AI report removed successfully." });
   });
   app.get("/api/attendance", authenticate, (req, res) => {
@@ -708,7 +709,7 @@ async function startServer(port = Number(process.env.PORT) || 3e3) {
     }
     res.json(records);
   });
-  app.post("/api/attendance", authenticate, (req, res) => {
+  app.post("/api/attendance", authenticate, async (req, res) => {
     const { date, classroomId, records } = req.body;
     if (!date || !classroomId || !records || !Array.isArray(records)) {
       res.status(400).json({ error: "date, classroomId, and records list are required" });
@@ -729,8 +730,8 @@ async function startServer(port = Number(process.env.PORT) || 3e3) {
         notes: rec.notes
       };
     });
-    db.setAttendance(preparedRecords);
-    db.addActivityLog({
+    await db.setAttendance(preparedRecords);
+    await db.addActivityLog({
       id: "act-" + crypto.randomUUID(),
       userId: req.user.id,
       userName: req.user.name,
@@ -807,8 +808,8 @@ async function startServer(port = Number(process.env.PORT) || 3e3) {
   app.get("/api/settings", authenticate, (req, res) => {
     res.json(db.getSettings());
   });
-  app.put("/api/settings", authenticate, (req, res) => {
-    const updated = db.updateSettings(req.body);
+  app.put("/api/settings", authenticate, async (req, res) => {
+    const updated = await db.updateSettings(req.body);
     res.json(updated);
   });
   app.get("/api/notifications", authenticate, (req, res) => {
@@ -827,7 +828,7 @@ async function startServer(port = Number(process.env.PORT) || 3e3) {
     }));
     res.json(formatted);
   });
-  app.post("/api/notifications/read", authenticate, (req, res) => {
+  app.post("/api/notifications/read", authenticate, async (req, res) => {
     const user = req.user;
     const notifs = db.getNotifications();
     notifs.forEach((n) => {
@@ -835,17 +836,17 @@ async function startServer(port = Number(process.env.PORT) || 3e3) {
         n.isRead = true;
       }
     });
-    db.save();
+    await db.save();
     res.json({ success: true });
   });
-  app.post("/api/notifications/clear", authenticate, (req, res) => {
+  app.post("/api/notifications/clear", authenticate, async (req, res) => {
     const user = req.user;
-    db.clearAllNotifications(user.id, user.role);
+    await db.clearAllNotifications(user.id, user.role);
     res.json({ success: true });
   });
-  app.delete("/api/notifications/:id", authenticate, (req, res) => {
+  app.delete("/api/notifications/:id", authenticate, async (req, res) => {
     const user = req.user;
-    const deleted = db.deleteNotification(req.params.id, user.id, user.role);
+    const deleted = await db.deleteNotification(req.params.id, user.id, user.role);
     if (deleted) {
       res.json({ success: true });
     } else {

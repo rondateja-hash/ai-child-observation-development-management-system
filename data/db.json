@@ -2,415 +2,461 @@
   "users": [
     {
       "id": "usr-admin",
-      "email": "admin@firstcry.com",
-      "passwordHash": "$2a$10$r8Qsh7vXf.M.l.e3i0o29OVgS/K3NlyfLoxjSjY8oWpBfR/0p89eW",
       "name": "Shalini Sen",
       "role": "Super Admin",
-      "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150",
+      "email": "admin@firstcry.com",
       "phone": "+91 98765 43210",
-      "active": true
+      "active": true,
+      "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150",
+      "passwordHash": "$2a$10$r8Qsh7vXf.M.l.e3i0o29OVgS/K3NlyfLoxjSjY8oWpBfR/0p89eW"
     },
     {
       "id": "usr-head",
-      "email": "head@firstcry.com",
-      "passwordHash": "$2a$10$r8Qsh7vXf.M.l.e3i0o29OVgS/K3NlyfLoxjSjY8oWpBfR/0p89eW",
       "name": "Vikram Malhotra",
       "role": "Centre Head",
-      "avatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150",
+      "email": "head@firstcry.com",
       "phone": "+91 98765 43211",
-      "active": true
+      "active": true,
+      "avatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150",
+      "passwordHash": "$2a$10$r8Qsh7vXf.M.l.e3i0o29OVgS/K3NlyfLoxjSjY8oWpBfR/0p89eW"
     },
     {
       "id": "usr-teacher1",
-      "email": "teacher@firstcry.com",
-      "passwordHash": "$2a$10$r8Qsh7vXf.M.l.e3i0o29OVgS/K3NlyfLoxjSjY8oWpBfR/0p89eW",
       "name": "Priya Nair",
       "role": "Teacher",
-      "avatar": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150",
+      "email": "teacher@firstcry.com",
       "phone": "+91 98765 43212",
+      "active": true,
+      "avatar": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150",
       "classroomId": "cls-toddlers",
-      "active": true
+      "passwordHash": "$2a$10$r8Qsh7vXf.M.l.e3i0o29OVgS/K3NlyfLoxjSjY8oWpBfR/0p89eW"
     },
     {
       "id": "usr-teacher2",
-      "email": "sneha@firstcry.com",
-      "passwordHash": "$2a$10$r8Qsh7vXf.M.l.e3i0o29OVgS/K3NlyfLoxjSjY8oWpBfR/0p89eW",
       "name": "Sneha Rao",
       "role": "Teacher",
-      "avatar": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150",
+      "email": "sneha@firstcry.com",
       "phone": "+91 98765 43213",
+      "active": true,
+      "avatar": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150",
       "classroomId": "cls-nursery",
-      "active": true
+      "passwordHash": "$2a$10$r8Qsh7vXf.M.l.e3i0o29OVgS/K3NlyfLoxjSjY8oWpBfR/0p89eW"
     },
     {
       "id": "usr-counsellor",
-      "email": "counsellor@firstcry.com",
-      "passwordHash": "$2a$10$r8Qsh7vXf.M.l.e3i0o29OVgS/K3NlyfLoxjSjY8oWpBfR/0p89eW",
       "name": "Dr. Anjali Deshmukh",
       "role": "Counsellor",
-      "avatar": "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=150",
+      "email": "counsellor@firstcry.com",
       "phone": "+91 98765 43214",
-      "active": true
+      "active": true,
+      "avatar": "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=150",
+      "passwordHash": "$2a$10$r8Qsh7vXf.M.l.e3i0o29OVgS/K3NlyfLoxjSjY8oWpBfR/0p89eW"
     },
     {
       "id": "usr-parent",
-      "email": "parent@firstcry.com",
-      "passwordHash": "$2a$10$r8Qsh7vXf.M.l.e3i0o29OVgS/K3NlyfLoxjSjY8oWpBfR/0p89eW",
       "name": "Rajesh Sharma",
       "role": "Parent",
-      "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150",
+      "email": "parent@firstcry.com",
       "phone": "+91 98765 43215",
-      "active": true
-    },
-    {
-      "id": "usr-af6b1a4897b9",
-      "email": "rishi@gmail.com",
-      "passwordHash": "parent123",
-      "name": "Harika",
-      "role": "Parent",
-      "phone": "7995001537",
       "active": true,
-      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150"
-    },
-    {
-      "id": "usr-829af6365aaa",
-      "email": "akshayakumari612@gmail.com",
-      "passwordHash": "12345",
-      "name": "Akshaya kumari",
-      "role": "Teacher",
-      "phone": "9182355435",
-      "classroomId": "cls-prep",
-      "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150",
-      "active": true,
-      "gender": "Female"
-    },
-    {
-      "id": "usr-9fe9cf955f5e",
-      "email": "Shiva@gmail.com",
-      "passwordHash": "23456",
-      "name": "Shiva Ram",
-      "role": "Teacher",
-      "phone": "2456789764",
-      "classroomId": "cls-prep",
-      "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150",
-      "active": true,
-      "gender": "Male"
+      "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150",
+      "passwordHash": "$2a$10$r8Qsh7vXf.M.l.e3i0o29OVgS/K3NlyfLoxjSjY8oWpBfR/0p89eW"
     },
     {
       "id": "usr-rondateja",
-      "email": "rondateja@gmail.com",
-      "passwordHash": "password123",
       "name": "Ronda Teja",
       "role": "Parent",
+      "email": "rondateja@gmail.com",
       "phone": "+91 98765 43219",
       "active": true,
-      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150"
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150",
+      "passwordHash": "password123"
     },
     {
       "id": "usr-tejasree",
-      "email": "tejasree@gmail.com",
-      "passwordHash": "password123",
       "name": "Teja Sree",
       "role": "Parent",
+      "email": "tejasree@gmail.com",
       "phone": "+91 98765 43220",
       "active": true,
-      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150"
-    }
-  ],
-  "children": [
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150",
+      "passwordHash": "password123"
+    },
     {
-      "id": "ch-riya",
-      "fullName": "Riya Sharma",
-      "dob": "2023-04-12",
-      "age": 3,
+      "id": "usr-af6b1a4897b9",
+      "name": "Harika",
+      "role": "Parent",
+      "email": "rishi@gmail.com",
+      "phone": "7995001537",
+      "active": true,
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150",
+      "passwordHash": "parent123"
+    },
+    {
+      "id": "usr-829af6365aaa",
+      "name": "Akshaya kumari",
+      "role": "Teacher",
+      "email": "akshayakumari612@gmail.com",
+      "phone": "9182355435",
+      "active": true,
+      "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150",
       "gender": "Female",
-      "bloodGroup": "O+",
-      "parentName": "Rajesh Sharma",
-      "parentPhone": "+91 98765 43215",
-      "parentEmail": "parent@firstcry.com",
-      "parentId": "usr-parent",
-      "parent_id": "usr-parent",
-      "address": "Flat 402, Sunshine Heights, Koramangala, Bengaluru",
-      "allergies": "Peanuts, Dust mites",
-      "medicalNotes": "Slight asthma under heavy dust exposure. Inhaler kept in teacher locker.",
-      "emergencyContact": "Rajesh Sharma (Father) - +91 98765 43215",
-      "classroomId": "cls-toddlers",
-      "classroomName": "Toddlers (Playgroup)",
-      "teacherId": "usr-teacher1",
-      "teacherName": "Priya Nair",
-      "photo": "https://images.unsplash.com/photo-1503919545889-aef636e10ad4?w=150"
-    },
-    {
-      "id": "ch-aarav",
-      "fullName": "Aarav Patel",
-      "dob": "2022-09-25",
-      "age": 3,
-      "gender": "Male",
-      "bloodGroup": "A+",
-      "parentName": "Karan Patel",
-      "parentPhone": "+91 98123 45678",
-      "parentEmail": "karan.patel@gmail.com",
-      "address": "Villa 12, Sobha Green Glen, Bellandur, Bengaluru",
-      "allergies": "None",
-      "medicalNotes": "No history of serious illnesses. Lactose-friendly diets preferred.",
-      "emergencyContact": "Meera Patel (Mother) - +91 98123 45679",
-      "classroomId": "cls-toddlers",
-      "classroomName": "Toddlers (Playgroup)",
-      "teacherId": "usr-teacher1",
-      "teacherName": "Priya Nair",
-      "photo": "https://images.unsplash.com/photo-1519457431-44ccd64a579b?w=150"
-    },
-    {
-      "id": "ch-kabir",
-      "fullName": "Kabir Malhotra",
-      "dob": "2021-02-15",
-      "age": 5,
-      "gender": "Male",
-      "bloodGroup": "B+",
-      "parentName": "Vikram Malhotra",
-      "parentPhone": "+91 98765 43211",
-      "parentEmail": "head@firstcry.com",
-      "address": "Penthouse 3, Prestige Lake Ridge, Whitefield, Bengaluru",
-      "allergies": "Gluten sensitivity",
-      "medicalNotes": "Avoid wheat products. Provide rice or oats-based snacks.",
-      "emergencyContact": "Vikram Malhotra (Father) - +91 98765 43211",
       "classroomId": "cls-prep",
-      "classroomName": "Kindergarten (Prep)",
-      "teacherId": "usr-teacher2",
-      "teacherName": "Sneha Rao",
-      "photo": "https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?w=150"
+      "passwordHash": "12345"
     },
     {
-      "id": "ch-ananya",
-      "fullName": "Ananya Sen",
-      "dob": "2022-01-30",
-      "age": 4,
+      "id": "usr-9fe9cf955f5e",
+      "name": "Shiva Ram",
+      "role": "Teacher",
+      "email": "Shiva@gmail.com",
+      "phone": "2456789764",
+      "active": true,
+      "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150",
+      "gender": "Male",
+      "classroomId": "cls-prep",
+      "passwordHash": "23456"
+    },
+    {
+      "id": "usr-d4de2b985b3a",
+      "name": "sumalatha",
+      "role": "Parent",
+      "email": "suma@gmail.com",
+      "phone": "123456789",
+      "active": true,
+      "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150",
       "gender": "Female",
-      "bloodGroup": "AB+",
-      "parentName": "Debashis Sen",
-      "parentPhone": "+91 99001 22334",
-      "parentEmail": "debashis.sen@gmail.com",
-      "address": "Apt 201, Shriram Blue, KR Puram, Bengaluru",
-      "allergies": "Eggs",
-      "medicalNotes": "Carry EpiPen in medical box.",
-      "emergencyContact": "Debashis Sen (Father) - +91 99001 22334",
+      "classroomId": "",
+      "passwordHash": "ba14df5c9974f8a5a6c5192de0a1da52:2220f72576da167a3718b148e2d9c785ca19b824360f7d46925745180ec5f3e6adad9d1271e9346759a4a93fe12b3af58fd9c79368b72e3f64b6e958e3113cd3"
+    },
+    {
+      "id": "usr-5a44d1c2c3b2",
+      "name": "vanditha",
+      "role": "Teacher",
+      "email": "vanditha@gmail.com",
+      "phone": "987654321",
+      "active": true,
+      "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150",
+      "gender": "Female",
       "classroomId": "cls-nursery",
-      "classroomName": "Nursery",
-      "teacherId": "usr-teacher2",
-      "teacherName": "Sneha Rao",
-      "photo": ""
-    },
-    {
-      "id": "ch-b0d34e03637e",
-      "fullName": "Rishi",
-      "dob": "2026-06-27",
-      "age": 3,
-      "gender": "Male",
-      "bloodGroup": "O+",
-      "parentName": "Harika",
-      "parentPhone": "7995001537",
-      "parentEmail": "rishi@gmail.com",
-      "address": "chirala, andhrapradesh",
-      "medicalNotes": "no",
-      "allergies": "no",
-      "emergencyContact": "123456789",
-      "classroomId": "cls-prep",
-      "classroomName": "Kindergarten (Prep)",
-      "teacherId": "usr-teacher1",
-      "teacherName": "Priya Nair",
-      "photo": "https://images.unsplash.com/photo-1519457431-44ccd64a579b?w=150"
-    },
-    {
-      "id": "ch-teja-jr",
-      "fullName": "Teja Jr",
-      "dob": "2022-05-15",
-      "age": 4,
-      "gender": "Male",
-      "bloodGroup": "O+",
-      "parentName": "Ronda Teja",
-      "parentPhone": "+91 98765 43219",
-      "parentEmail": "rondateja@gmail.com",
-      "parentId": "usr-rondateja",
-      "parent_id": "usr-rondateja",
-      "address": "Hyderabad, Telangana",
-      "allergies": "None",
-      "medicalNotes": "Healthy active child",
-      "emergencyContact": "Ronda Teja (Father) - +91 98765 43219",
-      "classroomId": "cls-prep",
-      "classroomName": "Kindergarten (Prep)",
-      "teacherId": "usr-teacher1",
-      "teacherName": "Priya Nair",
-      "photo": "https://images.unsplash.com/photo-1519457431-44ccd64a579b?w=150"
-    },
-    {
-      "id": "ch-sree-jr",
-      "fullName": "Sree Jr",
-      "dob": "2023-08-20",
-      "age": 3,
-      "gender": "Female",
-      "bloodGroup": "A+",
-      "parentName": "Teja Sree",
-      "parentPhone": "+91 98765 43220",
-      "parentEmail": "tejasree@gmail.com",
-      "parentId": "usr-tejasree",
-      "parent_id": "usr-tejasree",
-      "address": "Hyderabad, Telangana",
-      "allergies": "None",
-      "medicalNotes": "Healthy active child",
-      "emergencyContact": "Teja Sree (Mother) - +91 98765 43220",
-      "classroomId": "cls-nursery",
-      "classroomName": "Nursery",
-      "teacherId": "usr-teacher2",
-      "teacherName": "Sneha Rao",
-      "photo": ""
+      "passwordHash": "29bd24d81d3bc07952f027e8cc5d3281:2e2b49560a07617e29af5910fc487acecb19be1966554dd3daa2b7cce0bcbe7f51828d4e7b49ad7c6385188e42f545bcb2e9ee0ec4b8d68604dbaba500afe784"
     }
   ],
   "parents": [
     {
       "id": "pr-rajesh",
-      "fullName": "Rajesh Sharma",
       "email": "parent@firstcry.com",
       "phone": "+91 98765 43215",
       "address": "Flat 402, Sunshine Heights, Koramangala, Bengaluru",
+      "fullName": "Rajesh Sharma",
       "relationship": "Father"
     },
     {
       "id": "pr-karan",
-      "fullName": "Karan Patel",
       "email": "karan.patel@gmail.com",
       "phone": "+91 98123 45678",
       "address": "Villa 12, Sobha Green Glen, Bellandur, Bengaluru",
+      "fullName": "Karan Patel",
       "relationship": "Father"
     },
     {
       "id": "pr-vikram",
-      "fullName": "Vikram Malhotra",
       "email": "head@firstcry.com",
       "phone": "+91 98765 43211",
       "address": "Penthouse 3, Prestige Lake Ridge, Whitefield, Bengaluru",
+      "fullName": "Vikram Malhotra",
       "relationship": "Father"
     },
     {
       "id": "pr-debashis",
-      "fullName": "Debashis Sen",
       "email": "debashis.sen@gmail.com",
       "phone": "+91 99001 22334",
       "address": "Apt 201, Shriram Blue, KR Puram, Bengaluru",
+      "fullName": "Debashis Sen",
       "relationship": "Father"
     },
     {
       "id": "pr-rondateja",
-      "fullName": "Ronda Teja",
       "email": "rondateja@gmail.com",
       "phone": "+91 98765 43219",
       "address": "Hyderabad, Telangana",
+      "fullName": "Ronda Teja",
       "relationship": "Father"
     },
     {
       "id": "pr-tejasree",
-      "fullName": "Teja Sree",
       "email": "tejasree@gmail.com",
       "phone": "+91 98765 43220",
       "address": "Hyderabad, Telangana",
+      "fullName": "Teja Sree",
+      "relationship": "Mother"
+    },
+    {
+      "id": "pr-harika",
+      "email": "rishi@gmail.com",
+      "phone": "7995001537",
+      "address": "chirala, andhrapradesh",
+      "fullName": "Harika",
       "relationship": "Mother"
     }
   ],
-  "observations": [
+  "children": [
     {
-      "id": "obs-1",
-      "childId": "ch-riya",
-      "childName": "Riya Sharma",
-      "classroomName": "Toddlers (Playgroup)",
-      "category": "Social",
-      "note": "Riya shared toys with friends and participated actively in group activities.",
+      "id": "ch-riya",
+      "age": 3,
+      "dob": "2023-04-12",
+      "photo": "https://images.unsplash.com/photo-1503919545889-aef636e10ad4?w=150",
+      "gender": "Female",
+      "address": "Flat 402, Sunshine Heights, Koramangala, Bengaluru",
+      "fullName": "Riya Sharma",
+      "parentId": "usr-parent",
+      "allergies": "Peanuts, Dust mites",
+      "parent_id": "usr-parent",
       "teacherId": "usr-teacher1",
+      "bloodGroup": "O+",
+      "parentName": "Rajesh Sharma",
+      "classroomId": "cls-toddlers",
+      "parentEmail": "parent@firstcry.com",
+      "parentPhone": "+91 98765 43215",
       "teacherName": "Priya Nair",
-      "date": "2026-06-26",
-      "riskLevel": "Low",
-      "status": "Analyzed"
+      "medicalNotes": "Slight asthma under heavy dust exposure. Inhaler kept in teacher locker.",
+      "classroomName": "Toddlers (Playgroup)",
+      "emergencyContact": "Rajesh Sharma (Father) - +91 98765 43215"
     },
     {
-      "id": "obs-2",
-      "childId": "ch-riya",
-      "childName": "Riya Sharma",
-      "classroomName": "Toddlers (Playgroup)",
-      "category": "Communication",
-      "note": "Riya struggled to articulate her request during lunch, resorting to pointing and crying when not immediately understood.",
+      "id": "ch-aarav",
+      "age": 3,
+      "dob": "2022-09-25",
+      "photo": "https://images.unsplash.com/photo-1519457431-44ccd64a579b?w=150",
+      "gender": "Male",
+      "address": "Villa 12, Sobha Green Glen, Bellandur, Bengaluru",
+      "fullName": "Aarav Patel",
+      "allergies": "None",
       "teacherId": "usr-teacher1",
+      "bloodGroup": "A+",
+      "parentName": "Karan Patel",
+      "classroomId": "cls-toddlers",
+      "parentEmail": "karan.patel@gmail.com",
+      "parentPhone": "+91 98123 45678",
       "teacherName": "Priya Nair",
-      "date": "2026-06-25",
-      "riskLevel": "Medium",
-      "status": "Analyzed"
+      "medicalNotes": "No history of serious illnesses. Lactose-friendly diets preferred.",
+      "classroomName": "Toddlers (Playgroup)",
+      "emergencyContact": "Meera Patel (Mother) - +91 98123 45679"
     },
     {
-      "id": "obs-3",
-      "childId": "ch-aarav",
-      "childName": "Aarav Patel",
-      "classroomName": "Toddlers (Playgroup)",
-      "category": "Behaviour",
-      "note": "Aarav showed excellent patience during the blocks game. He waited for his turn and helped clean up the space afterward.",
-      "teacherId": "usr-teacher1",
-      "teacherName": "Priya Nair",
-      "date": "2026-06-26",
-      "riskLevel": "Low",
-      "status": "Pending"
-    },
-    {
-      "id": "obs-4",
-      "childId": "ch-kabir",
-      "childName": "Kabir Malhotra",
-      "classroomName": "Kindergarten (Prep)",
-      "category": "Learning",
-      "note": "Kabir showed brilliant interest in our space theme activity, naming multiple planets and asking curious questions about gravity.",
+      "id": "ch-kabir",
+      "age": 5,
+      "dob": "2021-02-15",
+      "photo": "https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?w=150",
+      "gender": "Male",
+      "address": "Penthouse 3, Prestige Lake Ridge, Whitefield, Bengaluru",
+      "fullName": "Kabir Malhotra",
+      "allergies": "Gluten sensitivity",
       "teacherId": "usr-teacher2",
+      "bloodGroup": "B+",
+      "parentName": "Vikram Malhotra",
+      "classroomId": "cls-prep",
+      "parentEmail": "head@firstcry.com",
+      "parentPhone": "+91 98765 43211",
       "teacherName": "Sneha Rao",
-      "date": "2026-06-25",
-      "riskLevel": "Low",
-      "status": "Pending"
+      "medicalNotes": "Avoid wheat products. Provide rice or oats-based snacks.",
+      "classroomName": "Kindergarten (Prep)",
+      "emergencyContact": "Vikram Malhotra (Father) - +91 98765 43211"
     },
     {
-      "id": "obs-52eb32a45fd2",
-      "childId": "ch-b0d34e03637e",
-      "childName": "Rishi",
-      "classroomName": "Kindergarten (Prep)",
-      "category": "Learning",
-      "note": "he activly participated in every games",
+      "id": "ch-ananya",
+      "age": 4,
+      "dob": "2022-01-30",
+      "photo": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150",
+      "gender": "Female",
+      "address": "Apt 201, Shriram Blue, KR Puram, Bengaluru",
+      "fullName": "Ananya Sen",
+      "allergies": "Eggs",
+      "teacherId": "usr-teacher2",
+      "bloodGroup": "AB+",
+      "parentName": "Debashis Sen",
+      "classroomId": "cls-nursery",
+      "parentEmail": "debashis.sen@gmail.com",
+      "parentPhone": "+91 99001 22334",
+      "teacherName": "Sneha Rao",
+      "medicalNotes": "Carry EpiPen in medical box.",
+      "classroomName": "Nursery",
+      "emergencyContact": "Debashis Sen (Father) - +91 99001 22334"
+    },
+    {
+      "id": "ch-teja-jr",
+      "age": 4,
+      "dob": "2022-05-15",
+      "photo": "https://images.unsplash.com/photo-1519457431-44ccd64a579b?w=150",
+      "gender": "Male",
+      "address": "Hyderabad, Telangana",
+      "fullName": "Teja Jr",
+      "parentId": "usr-rondateja",
+      "allergies": "None",
+      "parent_id": "usr-rondateja",
       "teacherId": "usr-teacher1",
+      "bloodGroup": "O+",
+      "parentName": "Ronda Teja",
+      "classroomId": "cls-prep",
+      "parentEmail": "rondateja@gmail.com",
+      "parentPhone": "+91 98765 43219",
       "teacherName": "Priya Nair",
-      "date": "2026-06-27",
-      "riskLevel": "Medium",
-      "status": "Analyzed"
+      "medicalNotes": "Healthy active child",
+      "classroomName": "Kindergarten (Prep)",
+      "emergencyContact": "Ronda Teja (Father) - +91 98765 43219"
+    },
+    {
+      "id": "ch-sree-jr",
+      "age": 3,
+      "dob": "2023-08-20",
+      "photo": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150",
+      "gender": "Female",
+      "address": "Hyderabad, Telangana",
+      "fullName": "Sree Jr",
+      "parentId": "usr-tejasree",
+      "allergies": "None",
+      "parent_id": "usr-tejasree",
+      "teacherId": "usr-teacher2",
+      "bloodGroup": "A+",
+      "parentName": "Teja Sree",
+      "classroomId": "cls-nursery",
+      "parentEmail": "tejasree@gmail.com",
+      "parentPhone": "+91 98765 43220",
+      "teacherName": "Sneha Rao",
+      "medicalNotes": "Healthy active child",
+      "classroomName": "Nursery",
+      "emergencyContact": "Teja Sree (Mother) - +91 98765 43220"
+    },
+    {
+      "id": "ch-b0d34e03637e",
+      "age": 3,
+      "dob": "2026-06-27",
+      "photo": "https://images.unsplash.com/photo-1519457431-44ccd64a579b?w=150",
+      "gender": "Male",
+      "address": "chirala, andhrapradesh",
+      "fullName": "Rishi",
+      "parentId": "usr-af6b1a4897b9",
+      "allergies": "no",
+      "parent_id": "usr-af6b1a4897b9",
+      "teacherId": "usr-teacher1",
+      "bloodGroup": "O+",
+      "parentName": "Harika",
+      "classroomId": "cls-prep",
+      "parentEmail": "rishi@gmail.com",
+      "parentPhone": "7995001537",
+      "teacherName": "Priya Nair",
+      "medicalNotes": "no",
+      "classroomName": "Kindergarten (Prep)",
+      "emergencyContact": "123456789"
+    },
+    {
+      "id": "ch-abf24c93480b",
+      "age": 3,
+      "dob": "2026-06-30",
+      "photo": "https://images.unsplash.com/photo-1503919545889-aef636e10ad4?w=150",
+      "gender": "Female",
+      "address": "kadapa",
+      "fullName": "priyanka",
+      "parentId": "usr-d4de2b985b3a",
+      "allergies": "no",
+      "parent_id": "usr-d4de2b985b3a",
+      "teacherId": "usr-teacher2",
+      "bloodGroup": "O+",
+      "parentName": "sumalatha",
+      "classroomId": "cls-nursery",
+      "parentEmail": "suma@gmail.com",
+      "parentPhone": "123456789",
+      "teacherName": "Sneha Rao",
+      "medicalNotes": "no",
+      "classroomName": "Nursery",
+      "emergencyContact": "987654321"
+    },
+    {
+      "id": "ch-c78851aef417",
+      "age": 3,
+      "dob": "2026-06-30",
+      "photo": "https://images.unsplash.com/photo-1519457431-44ccd64a579b?w=150",
+      "gender": "Male",
+      "address": "kurnool",
+      "fullName": "sai",
+      "parentId": "",
+      "allergies": "no",
+      "parent_id": "",
+      "teacherId": "usr-teacher2",
+      "bloodGroup": "O+",
+      "parentName": "siri",
+      "classroomId": "cls-nursery",
+      "parentEmail": "siri@gmail.com",
+      "parentPhone": "123456789",
+      "teacherName": "Sneha Rao",
+      "medicalNotes": "no",
+      "classroomName": "Nursery",
+      "emergencyContact": "76548932"
+    },
+    {
+      "id": "ch-349a55d708c0",
+      "fullName": "Keethika",
+      "dob": "2026-06-30",
+      "age": 3,
+      "gender": "Female",
+      "bloodGroup": "O+",
+      "parentName": "Keerthi",
+      "parentPhone": "9875643673",
+      "parentEmail": "keerthi@gmail.com",
+      "parentId": "",
+      "parent_id": "",
+      "address": "Telangala",
+      "medicalNotes": "no",
+      "allergies": "no",
+      "emergencyContact": "243467495890",
+      "classroomId": "cls-prep",
+      "classroomName": "Kindergarten (Prep)",
+      "teacherId": "usr-829af6365aaa",
+      "teacherName": "Akshaya kumari",
+      "photo": "https://images.unsplash.com/photo-1503919545889-aef636e10ad4?w=150"
     }
   ],
+  "settings": {
+    "theme": "light",
+    "logoUrl": "https://images.unsplash.com/photo-1595152772835-219674b2a8a6?w=100",
+    "smtpHost": "smtp.firstcry.com",
+    "smtpPort": 587,
+    "smtpUser": "notifications@firstcryintellitots.com",
+    "schoolName": "FirstCry Intellitots, Koramangala",
+    "backupInterval": "Daily"
+  },
   "aiReports": [
     {
       "id": "rep-1",
-      "observationId": "obs-1",
       "childId": "ch-riya",
-      "childName": "Riya Sharma",
       "summary": "Riya demonstrated positive prosocial behavior by sharing toys and engaging enthusiastically in peer circle group activities.",
+      "concerns": [
+        "Slightly dependent on teacher validation to sustain play"
+      ],
+      "childName": "Riya Sharma",
+      "riskLevel": "Low",
       "strengths": [
         "Highly collaborative in group play",
         "Willingness to share learning aids and toys",
         "Active participation in nursery rhyme singing"
       ],
-      "concerns": [
-        "Slightly dependent on teacher validation to sustain play"
-      ],
-      "recommendations": [
-        "Encourage small-group self-directed play to foster independent play skills",
-        "Praise Riya for sharing to reinforce positive reinforcement patterns"
-      ],
       "activities": [
         "Two-player building blocks challenge",
         "Relay race with toys sharing"
       ],
+      "generatedBy": "Priya Nair",
+      "dateGenerated": "2026-06-29",
+      "observationId": "obs-1",
+      "overallSummary": "Riya is progressing exceptionally well in her social development milestone. Her natural cooperative habits are a great asset to the class community.",
+      "recommendations": [
+        "Encourage small-group self-directed play to foster independent play skills",
+        "Praise Riya for sharing to reinforce positive reinforcement patterns"
+      ],
       "developmentNotes": {
         "socialSkills": "Riya exhibits strong social awareness and values group membership. She shows peer empathy by sharing resource blocks.",
+        "confidenceLevel": "Exhibits excellent trust in her surrounding environment and feels comfortable displaying creativity.",
         "learningProgress": "Very fast to adapt to group curriculum guidelines and shows eagerness to follow instructions.",
-        "communicationSkills": "Expresses joy and interactive responses comfortably in comfortable social scenarios.",
         "emotionalBehaviour": "Stable, cheerful, and displays highly responsive bonding with peers and instructors.",
-        "confidenceLevel": "Exhibits excellent trust in her surrounding environment and feels comfortable displaying creativity."
+        "communicationSkills": "Expresses joy and interactive responses comfortably in comfortable social scenarios."
       },
       "parentSuggestions": [
         "Set up sibling or playdate block building exercises at home.",
@@ -419,40 +465,40 @@
       "teacherRecommendations": [
         "Assign her as group helper next week to build confidence.",
         "Observe her during transition times to check for self-regulation."
-      ],
-      "riskLevel": "Low",
-      "overallSummary": "Riya is progressing exceptionally well in her social development milestone. Her natural cooperative habits are a great asset to the class community.",
-      "dateGenerated": "2026-06-26",
-      "generatedBy": "Priya Nair"
+      ]
     },
     {
       "id": "rep-2",
-      "observationId": "obs-2",
       "childId": "ch-riya",
-      "childName": "Riya Sharma",
       "summary": "During high-density communication scenarios (lunch period requests), Riya experienced frustration leading to emotional outbursts when struggling to find words.",
-      "strengths": [
-        "Strong non-verbal cues and emotional display",
-        "Calms down quickly with gentle, supportive teacher redirection"
-      ],
       "concerns": [
         "Relatively high frustration response when verbal communication limits are reached",
         "Resorts to pointing and crying instead of requesting words"
       ],
-      "recommendations": [
-        "Introduce basic expressive vocabulary cards",
-        "Implement the 'use your words' slow-prompt technique during high-motivation times like lunch"
+      "childName": "Riya Sharma",
+      "riskLevel": "Medium",
+      "strengths": [
+        "Strong non-verbal cues and emotional display",
+        "Calms down quickly with gentle, supportive teacher redirection"
       ],
       "activities": [
         "Label-the-food matching exercises",
         "Roleplay buying and selling toy groceries"
       ],
+      "generatedBy": "Priya Nair",
+      "dateGenerated": "2026-06-28",
+      "observationId": "obs-2",
+      "overallSummary": "Riya is demonstrating regular milestone development with an expressive language buffer area. Focused expressive and calming routines will help her bridge this gap.",
+      "recommendations": [
+        "Introduce basic expressive vocabulary cards",
+        "Implement the 'use your words' slow-prompt technique during high-motivation times like lunch"
+      ],
       "developmentNotes": {
         "socialSkills": "Generally highly interactive, but frustration temporarily impairs social participation.",
+        "confidenceLevel": "Confidence fluctuates when verbal requests are not immediately resolved.",
         "learningProgress": "Exhibits normal cognitive development; expressive speech is the key focused growth area.",
-        "communicationSkills": "Strong receptive understanding but faces expressive delays in high-stimulus or emotional environments.",
         "emotionalBehaviour": "Exhibits intense emotional reactions which can be managed with structured comfort breaks.",
-        "confidenceLevel": "Confidence fluctuates when verbal requests are not immediately resolved."
+        "communicationSkills": "Strong receptive understanding but faces expressive delays in high-stimulus or emotional environments."
       },
       "parentSuggestions": [
         "Encourage her to complete full sentences at home instead of answering for her.",
@@ -461,133 +507,213 @@
       "teacherRecommendations": [
         "Provide visual communication templates next to her seat.",
         "Practice deep-breathing micro-sessions when she starts crying."
-      ],
-      "riskLevel": "Medium",
-      "overallSummary": "Riya is demonstrating regular milestone development with an expressive language buffer area. Focused expressive and calming routines will help her bridge this gap.",
-      "dateGenerated": "2026-06-25",
-      "generatedBy": "Priya Nair"
+      ]
     },
     {
-      "id": "rep-c81a7fb97621",
-      "observationId": "obs-52eb32a45fd2",
-      "childId": "ch-b0d34e03637e",
-      "childName": "Rishi",
-      "summary": "Rishi exhibits exceptional enthusiasm and active participation in structured classroom games and group activities. His eagerness to engage reflects strong social-emotional readiness, excellent peer integration, and a highly positive attitude toward experiential learning. This behavior indicates a well-adjusted, confident three-year-old who thrives in a collaborative preschool environment.",
+      "id": "rep-99bb8f9d7609",
+      "childId": "ch-abf24c93480b",
+      "summary": "[Fallback Mode - AI Key Not Setup or Connected] priyanka was observed under the Communication category. Note: \"priyanka eat apple in this class\"",
+      "concerns": [
+        "None identified based on current observational entry."
+      ],
+      "childName": "priyanka",
+      "riskLevel": "Low",
       "strengths": [
-        "High level of intrinsic motivation and joyful engagement in diverse group activities.",
-        "Strong social-emotional readiness and a natural inclination for collaborative play.",
-        "Excellent adaptive skills, showing comfort and confidence in structured learning setups."
+        "Demonstrates adaptive engagement in classroom setting under Communication",
+        "Eager to participate in activities organized by Teacher Shiva Ram",
+        "Responds positively to peer and instructor directives"
+      ],
+      "activities": [
+        "Interactive collaborative block-building games with 1-2 classmates.",
+        "Short story sessions focusing on emotion naming and cooperative outcomes."
+      ],
+      "generatedBy": "Akshaya kumari",
+      "dateGenerated": "2026-06-29",
+      "observationId": "obs-b579f53defea",
+      "overallSummary": "A comprehensive progress report. priyanka is tracking positively against standard child developmental markers, and continued collaboration will support ongoing success. (Diagnostic Info: {\"error\":{\"code\":503,\"message\":\"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\"status\":\"UNAVAILABLE\"}})",
+      "recommendations": [
+        "Maintain regular routine scheduling to help priyanka transition easily between activities.",
+        "Incorporate peer buddy structures during playgroup/classroom exercises."
+      ],
+      "developmentNotes": {
+        "socialSkills": "priyanka shows friendly behaviors toward peers and generally cooperates with classroom group norms.",
+        "confidenceLevel": "Comfortable in their primary classroom. Adapts well to teachers and shows positive exploratory drive.",
+        "learningProgress": "Shows standard developmental compliance; cognitive interest matches typical child patterns for age 3.",
+        "emotionalBehaviour": "Appropriate for preschool level. Displays standard curiosity and responds well to soothing intervention when needed.",
+        "communicationSkills": "Receptive abilities are excellent; continuing to monitor prompt responsiveness and expressive words."
+      },
+      "parentSuggestions": [
+        "Support peer engagement by organizing short supervised playdates at home.",
+        "Practice descriptive naming of emotions during reading hours (e.g. 'Is the bear happy or sad?')."
+      ],
+      "teacherRecommendations": [
+        "Assign simple helpful tasks (e.g., passing out crayon sheets) to bolster leadership.",
+        "Incorporate clear visual schedules for classroom transitions."
+      ]
+    },
+    {
+      "id": "rep-53c5b718983e",
+      "childId": "ch-c78851aef417",
+      "summary": "[Fallback Mode - AI Key Not Setup or Connected] sai was observed under the Motor Skills category. Note: \"sai struggle to open the cap of bottle while drinkig\"",
+      "concerns": [
+        "Requires occasional verbal prompt to regulate expressive emotional states during transitions."
+      ],
+      "childName": "sai",
+      "riskLevel": "Medium",
+      "strengths": [
+        "Demonstrates adaptive engagement in classroom setting under Motor Skills",
+        "Eager to participate in activities organized by Teacher Shalini Sen",
+        "Responds positively to peer and instructor directives"
+      ],
+      "activities": [
+        "Interactive collaborative block-building games with 1-2 classmates.",
+        "Short story sessions focusing on emotion naming and cooperative outcomes."
+      ],
+      "generatedBy": "Shalini Sen",
+      "dateGenerated": "2026-06-29",
+      "observationId": "obs-6050e678b07f",
+      "overallSummary": "A comprehensive progress report. sai is tracking positively against standard child developmental markers, and continued collaboration will support ongoing success. (Diagnostic Info: {\"error\":{\"code\":503,\"message\":\"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\"status\":\"UNAVAILABLE\"}})",
+      "recommendations": [
+        "Maintain regular routine scheduling to help sai transition easily between activities.",
+        "Incorporate peer buddy structures during playgroup/classroom exercises."
+      ],
+      "developmentNotes": {
+        "socialSkills": "sai shows friendly behaviors toward peers and generally cooperates with classroom group norms.",
+        "confidenceLevel": "Comfortable in their primary classroom. Adapts well to teachers and shows positive exploratory drive.",
+        "learningProgress": "Shows standard developmental compliance; cognitive interest matches typical child patterns for age 3.",
+        "emotionalBehaviour": "Appropriate for preschool level. Displays standard curiosity and responds well to soothing intervention when needed.",
+        "communicationSkills": "Receptive abilities are excellent; continuing to monitor prompt responsiveness and expressive words."
+      },
+      "parentSuggestions": [
+        "Support peer engagement by organizing short supervised playdates at home.",
+        "Practice descriptive naming of emotions during reading hours (e.g. 'Is the bear happy or sad?')."
+      ],
+      "teacherRecommendations": [
+        "Assign simple helpful tasks (e.g., passing out crayon sheets) to bolster leadership.",
+        "Incorporate clear visual schedules for classroom transitions."
+      ]
+    },
+    {
+      "id": "rep-b74b4a327b2e",
+      "observationId": "obs-693fe04ad75e",
+      "childId": "ch-349a55d708c0",
+      "childName": "Keethika",
+      "summary": "Keethika shows delightful creative engagement and age-appropriate fine motor skills through her independent artwork. Her representation of a tree diagram with crayons highlights strong spatial awareness and emerging symbolic thinking for a three-year-old child.",
+      "strengths": [
+        "Demonstrates promising fine motor control and bilateral coordination while maneuvering crayons.",
+        "Exhibits representational cognitive thinking by translating real-world observations into structured art.",
+        "Displays sustained attention and task commitment during self-directed creative activities."
       ],
       "concerns": [
         "None identified"
       ],
       "recommendations": [
-        "Introduce multi-step cooperative games to gently stretch Rishi's cognitive planning and memory retention.",
-        "Integrate structured turn-taking activities to further refine his emerging self-regulation and impulse control.",
-        "Provide opportunities for peer leadership roles during small group tasks to channel his high energy constructively."
+        "Introduce varied tactile mediums like finger paint, clay, or chalk to further stimulate sensory integration.",
+        "Encourage Keethika to verbally describe the narrative behind her drawings to boost expressive vocabulary.",
+        "Incorporate simple multi-step craft projects to progressively strengthen her planning and executive functioning skills."
       ],
       "activities": [
-        "Active listening games like 'Simon Says' with dual-step instructions to boost auditory processing and executive function.",
-        "Cooperative building challenges where Rishi partners with a classmate to construct a tower using shared materials.",
-        "Turn-taking board games or simple card matching games that require waiting patiently for one's turn."
+        "Nature Collage Assembly: Gathering leaves and twigs outdoors to paste onto paper, creating a 3D tactile tree.",
+        "Sponge Stamp Painting: Using different sponge shapes to paint tree canopies, which encourages grip variation and color mixing.",
+        "Sensory Sand Drawing: Tracing simple shapes and lines in a shallow tray of colored sand to build pre-writing muscle memory."
       ],
       "developmentNotes": {
-        "socialSkills": "Rishi demonstrates superb social integration, naturally gravitating toward peer groups and actively cooperating during play. His willingness to participate in joint games is an excellent developmental indicator of emerging associative and cooperative play styles.",
-        "learningProgress": "Rishi's active participation shows a strong attention span for age-appropriate tasks and excellent compliance with game structures. He displays a healthy curiosity and processes rules effectively through direct, hands-on involvement.",
-        "communicationSkills": "His successful engagement in group games points to strong receptive language abilities, as he successfully interprets instructions. To support his expressive communication, he should be encouraged to explain game rules to peers or summarize his favorite activities.",
-        "emotionalBehaviour": "Rishi displays vibrant emotional health, showing high resilience and a secure comfort level in his classroom environment. He channels his enthusiasm constructively, indicating a solid foundation in emotional self-regulation.",
-        "confidenceLevel": "Rishi's level of autonomy and self-assurance is highly commendable. He enters group dynamics without hesitation, indicating a secure sense of self and an eagerness to explore new educational horizons."
+        "socialSkills": "Keethika transitions smoothly into group art settings, demonstrating healthy parallel play and a willingness to share workspace with her peers.",
+        "learningProgress": "She exhibits solid cognitive progress and fine-motor focus, showing an ability to follow simple instructions and map concepts visually.",
+        "communicationSkills": "Her communication skills are developing well; she confidently labels her artwork and uses expressive gestures to explain her drawings.",
+        "emotionalBehaviour": "She displays a calm, emotionally regulated demeanor, showing persistence and joy when faced with self-directed creative tasks.",
+        "confidenceLevel": "Keethika exhibits high self-efficacy, selecting her colors independently and approaching blank paper with curiosity and comfort."
       },
       "parentSuggestions": [
-        "Encourage Rishi to narrate his preschool day, using open-ended questions like 'What was the most fun part of the game today?' to build expressive language.",
-        "Incorporate family game nights with simple rules to reinforce turn-taking, sharing, and coping with both winning and losing.",
-        "Create simple obstacle courses at home to keep him physically active while practicing following sequence-based instructions."
+        "Designate a special display space at home for Keethika's artwork to foster a sense of pride and accomplishment.",
+        "Practice descriptive talk during play, asking open-ended questions like 'Tell me about this beautiful color you chose!'",
+        "Incorporate fine motor games at home, such as peeling stickers or threading large beads, to continue strengthening her finger muscles."
       ],
       "teacherRecommendations": [
-        "Utilize Rishi's positive energy by pairing him with quieter or more reserved peers during group games to encourage inclusive classroom dynamics.",
-        "Slowly scaffold game rules by adding mild challenges to keep him cognitively engaged and intellectually stimulated.",
-        "Observe and document his choice of games to understand his specific thematic interests and integrate them into future lesson plans."
+        "Incorporate triangular or rock-shaped crayons to scaffold her transition towards a functional tripod grasp.",
+        "Use her drawings as conversation starters in circle time to build her peer-to-peer communication skills.",
+        "Provide positive visual reinforcement by placing her finished tree diagrams on the classroom display board at her eye level."
       ],
       "riskLevel": "Low",
-      "overallSummary": "Rishi's dynamic participation highlights a joyful, confident, and socially adept young learner who is hitting his developmental milestones beautifully. By collaborating on supportive strategies at home and in school, we can continue to foster his wonderful leadership qualities, cognitive growth, and lifelong love for learning.",
-      "dateGenerated": "2026-06-27",
-      "generatedBy": "Priya Nair"
+      "overallSummary": "Keethika is reaching her early developmental milestones beautifully, particularly in her fine motor control and creative expression. By reinforcing her visual-spatial skills through rich, sensory-based play both at home and school, we can continue to foster her intellectual curiosity and confidence. We look forward to partnering with you to support and track her bright educational journey.",
+      "dateGenerated": "2026-06-30",
+      "generatedBy": "vanditha"
     }
   ],
   "attendance": [
     {
       "id": "att-1",
+      "date": "2026-06-29",
+      "status": "Present",
       "childId": "ch-riya",
       "childName": "Riya Sharma",
       "classroomId": "cls-toddlers",
-      "classroomName": "Toddlers (Playgroup)",
-      "date": "2026-06-26",
-      "status": "Present"
+      "classroomName": "Toddlers (Playgroup)"
     },
     {
       "id": "att-2",
+      "date": "2026-06-29",
+      "status": "Present",
       "childId": "ch-aarav",
       "childName": "Aarav Patel",
       "classroomId": "cls-toddlers",
-      "classroomName": "Toddlers (Playgroup)",
-      "date": "2026-06-26",
-      "status": "Present"
+      "classroomName": "Toddlers (Playgroup)"
     },
     {
       "id": "att-3",
+      "date": "2026-06-29",
+      "notes": "Traffic delays",
+      "status": "Late",
       "childId": "ch-ananya",
       "childName": "Ananya Sen",
       "classroomId": "cls-nursery",
-      "classroomName": "Nursery",
-      "date": "2026-06-26",
-      "status": "Late",
-      "notes": "Traffic delays"
+      "classroomName": "Nursery"
     },
     {
       "id": "att-4",
+      "date": "2026-06-29",
+      "notes": "Mild fever",
+      "status": "Absent",
       "childId": "ch-kabir",
       "childName": "Kabir Malhotra",
       "classroomId": "cls-prep",
-      "classroomName": "Kindergarten (Prep)",
-      "date": "2026-06-26",
-      "status": "Absent",
-      "notes": "Mild fever"
+      "classroomName": "Kindergarten (Prep)"
     },
     {
       "id": "att-5",
+      "date": "2026-06-28",
+      "status": "Present",
       "childId": "ch-riya",
       "childName": "Riya Sharma",
       "classroomId": "cls-toddlers",
-      "classroomName": "Toddlers (Playgroup)",
-      "date": "2026-06-25",
-      "status": "Present"
+      "classroomName": "Toddlers (Playgroup)"
     },
     {
       "id": "att-6",
+      "date": "2026-06-28",
+      "status": "Present",
       "childId": "ch-aarav",
       "childName": "Aarav Patel",
       "classroomId": "cls-toddlers",
-      "classroomName": "Toddlers (Playgroup)",
-      "date": "2026-06-25",
-      "status": "Present"
+      "classroomName": "Toddlers (Playgroup)"
     },
     {
       "id": "att-7",
+      "date": "2026-06-28",
+      "status": "Present",
       "childId": "ch-ananya",
       "childName": "Ananya Sen",
       "classroomId": "cls-nursery",
-      "classroomName": "Nursery",
-      "date": "2026-06-25",
-      "status": "Present"
+      "classroomName": "Nursery"
     },
     {
       "id": "att-8",
+      "date": "2026-06-28",
+      "status": "Present",
       "childId": "ch-kabir",
       "childName": "Kabir Malhotra",
       "classroomId": "cls-prep",
-      "classroomName": "Kindergarten (Prep)",
-      "date": "2026-06-25",
-      "status": "Present"
+      "classroomName": "Kindergarten (Prep)"
     }
   ],
   "classrooms": [
@@ -614,321 +740,458 @@
     {
       "id": "m-1",
       "title": "Shares toys with peers",
-      "description": "Willingly offers play materials to classmates during free play.",
       "category": "Social",
+      "description": "Willingly offers play materials to classmates during free play.",
       "targetAgeMonths": 36
     },
     {
       "id": "m-2",
       "title": "Expresses needs in words",
-      "description": "Uses 3-4 word phrases to request food, water, or help.",
       "category": "Communication",
+      "description": "Uses 3-4 word phrases to request food, water, or help.",
       "targetAgeMonths": 36
     },
     {
       "id": "m-3",
       "title": "Hops on one foot",
-      "description": "Balances and hops on one foot at least 3 times consecutively.",
       "category": "Physical",
+      "description": "Balances and hops on one foot at least 3 times consecutively.",
       "targetAgeMonths": 48
     },
     {
       "id": "m-4",
       "title": "Sorts items by color",
-      "description": "Identifies and groups plastic blocks or crayons by their prime color.",
       "category": "Learning",
+      "description": "Identifies and groups plastic blocks or crayons by their prime color.",
       "targetAgeMonths": 36
-    }
-  ],
-  "notifications": [
-    {
-      "id": "notif-632825a5-c695-4b51-aabd-b1ce49fb97fa",
-      "userId": "usr-teacher1",
-      "title": "AI Report Generated",
-      "message": "Gemini AI prepared developmental summary for Rishi",
-      "type": "success",
-      "isRead": false,
-      "timestamp": "2026-06-27T05:12:17.879Z"
-    },
-    {
-      "id": "notif-421a4ee6-e39a-4b07-91fe-054e4e73181c",
-      "userId": "usr-head",
-      "title": "Action Required: Medium Risk Observation",
-      "message": "Teacher Priya Nair reported a Medium risk behaviour in Rishi (Learning)",
-      "type": "warning",
-      "isRead": false,
-      "timestamp": "2026-06-27T05:01:44.974Z"
-    },
-    {
-      "id": "notif-e25c0c4d-11bb-4b4f-a7be-2e32e5b224c9",
-      "userId": "usr-admin",
-      "title": "Action Required: Medium Risk Observation",
-      "message": "Teacher Priya Nair reported a Medium risk behaviour in Rishi (Learning)",
-      "type": "warning",
-      "isRead": false,
-      "timestamp": "2026-06-27T05:01:44.971Z"
-    },
-    {
-      "id": "not-1",
-      "userId": "usr-teacher1",
-      "title": "Observation Logged Successfully",
-      "message": "You have recorded a social observation note for Riya Sharma.",
-      "type": "success",
-      "isRead": false,
-      "timestamp": "2026-06-26T20:15:24.084Z"
-    },
-    {
-      "id": "not-2",
-      "userId": "usr-admin",
-      "title": "AI Report Generated",
-      "message": "A new development report is generated for child Riya Sharma.",
-      "type": "info",
-      "isRead": false,
-      "timestamp": "2026-06-26T19:15:24.084Z"
-    },
-    {
-      "id": "not-3",
-      "userId": "usr-teacher1",
-      "title": "Attendance Overdue",
-      "message": "Please complete today's Toddlers classroom attendance log.",
-      "type": "warning",
-      "isRead": true,
-      "timestamp": "2026-06-26T16:15:24.084Z"
     }
   ],
   "activityLogs": [
     {
-      "id": "act-3cc1a468-ef6e-487b-8d1b-2be382fba921",
-      "userId": "usr-parent",
-      "userName": "Rajesh Sharma",
-      "action": "Login",
-      "details": "Successful login as Parent",
-      "timestamp": "2026-06-27T16:57:10.328Z"
-    },
-    {
-      "id": "act-c464303d-21d4-4664-8859-29b41e8d3bee",
-      "userId": "usr-parent",
-      "userName": "Rajesh Sharma",
-      "action": "Login",
-      "details": "Successful login as Parent",
-      "timestamp": "2026-06-27T16:56:46.465Z"
-    },
-    {
-      "id": "act-2c9fad66-8620-4984-8356-95e2e3407cf8",
-      "userId": "usr-teacher1",
-      "userName": "Priya Nair",
-      "action": "Login",
-      "details": "Successful login as Teacher",
-      "timestamp": "2026-06-27T16:54:38.490Z"
-    },
-    {
-      "id": "act-1550b952-be4f-4df1-9bcd-110402c56c30",
-      "userId": "usr-teacher1",
-      "userName": "Priya Nair",
-      "action": "Login",
-      "details": "Successful login as Teacher",
-      "timestamp": "2026-06-27T16:46:56.701Z"
-    },
-    {
-      "id": "act-0f527505-8693-4e48-b343-2a192abe8370",
-      "userId": "usr-admin",
-      "userName": "Shalini Sen",
-      "action": "Login",
-      "details": "Successful login as Super Admin",
-      "timestamp": "2026-06-27T09:23:53.902Z"
-    },
-    {
-      "id": "act-709402b3-b3b9-4070-9c7c-57c51ef9b582",
-      "userId": "usr-admin",
-      "userName": "Shalini Sen",
-      "action": "Login",
-      "details": "Successful login as Super Admin",
-      "timestamp": "2026-06-27T08:59:13.201Z"
-    },
-    {
-      "id": "act-12f2f85e-c74c-46cd-8217-344bd2e08cdc",
-      "userId": "usr-head",
-      "userName": "Vikram Malhotra",
-      "action": "Login",
-      "details": "Successful login as Centre Head",
-      "timestamp": "2026-06-27T05:29:09.954Z"
-    },
-    {
-      "id": "act-29b26e19-da07-4ece-917d-d7e24ecb47b3",
-      "userId": "usr-admin",
-      "userName": "Shalini Sen",
-      "action": "User Created",
-      "details": "Created new user Shiva Ram with role Teacher",
-      "timestamp": "2026-06-27T05:28:44.191Z"
-    },
-    {
-      "id": "act-2dfeccb0-f79d-476c-a2be-2061d240d878",
-      "userId": "usr-admin",
-      "userName": "Shalini Sen",
-      "action": "Login",
-      "details": "Successful login as Super Admin",
-      "timestamp": "2026-06-27T05:27:08.891Z"
-    },
-    {
-      "id": "act-ac62fb2c-7587-4149-b2d8-0a9ce1ce1dff",
-      "userId": "usr-parent",
-      "userName": "Rajesh Sharma",
-      "action": "Login",
-      "details": "Successful login as Parent",
-      "timestamp": "2026-06-27T05:26:58.718Z"
-    },
-    {
-      "id": "act-9734869a-6fd4-4575-9f24-7ab1121bf585",
-      "userId": "usr-admin",
-      "userName": "Shalini Sen",
-      "action": "User Created",
-      "details": "Created new user Akshaya kumari with role Teacher",
-      "timestamp": "2026-06-27T05:18:11.575Z"
-    },
-    {
-      "id": "act-f51efd00-8566-4183-9d1a-a8484d687f56",
-      "userId": "usr-admin",
-      "userName": "Shalini Sen",
-      "action": "Login",
-      "details": "Successful login as Super Admin",
-      "timestamp": "2026-06-27T05:16:33.234Z"
-    },
-    {
-      "id": "act-5608a764-53ed-4c18-bf88-f0005dbbe47f",
-      "userId": "usr-parent",
-      "userName": "Rajesh Sharma",
-      "action": "Login",
-      "details": "Successful login as Parent",
-      "timestamp": "2026-06-27T05:16:03.092Z"
-    },
-    {
-      "id": "act-aec49cb1-3cf6-4815-a438-5a12761f1f55",
-      "userId": "usr-teacher1",
-      "userName": "Priya Nair",
+      "id": "act-61f7541a-2f2c-4e28-87ca-a4faf5e8b376",
+      "userId": "usr-5a44d1c2c3b2",
+      "userName": "vanditha",
       "action": "AI Report Generated",
-      "details": "Generated standard intelligence development profile for Rishi",
-      "timestamp": "2026-06-27T05:12:17.882Z"
+      "details": "Generated standard intelligence development profile for Keethika",
+      "timestamp": "2026-06-30T03:46:30.078Z"
     },
     {
-      "id": "act-db8bc4b9-54fa-4a68-afa4-be1d1b21ccd3",
-      "userId": "usr-teacher1",
-      "userName": "Priya Nair",
-      "action": "Login",
-      "details": "Successful login as Teacher",
-      "timestamp": "2026-06-27T05:11:52.412Z"
-    },
-    {
-      "id": "act-b9a2830f-577e-4ee5-8302-071b1955bd78",
-      "userId": "usr-teacher1",
-      "userName": "Priya Nair",
-      "action": "Login",
-      "details": "Successful login as Teacher",
-      "timestamp": "2026-06-27T05:08:21.621Z"
-    },
-    {
-      "id": "act-c88a67dd-f08d-462d-bf10-3b6fde1c76f3",
-      "userId": "usr-teacher1",
-      "userName": "Priya Nair",
-      "action": "Login",
-      "details": "Successful login as Teacher",
-      "timestamp": "2026-06-27T05:07:53.090Z"
-    },
-    {
-      "id": "act-f945a3ae-c187-41a3-8ec3-f2e4d8925a6e",
-      "userId": "usr-teacher1",
-      "userName": "Priya Nair",
+      "id": "act-dad4df0b-f9fe-4b42-8ebb-17bc86c84e78",
+      "userId": "usr-5a44d1c2c3b2",
+      "userName": "vanditha",
       "action": "Observation Created",
-      "details": "Created Learning observation for Rishi",
-      "timestamp": "2026-06-27T05:01:44.977Z"
+      "details": "Created Creativity observation for Keethika",
+      "timestamp": "2026-06-30T03:45:50.753Z"
     },
     {
-      "id": "act-d4c1b6ee-9507-4712-9842-65e7ddcf7c8c",
+      "id": "act-9915ff3c-78d9-4eeb-b965-2078c97c546c",
       "userId": "usr-teacher1",
       "userName": "Priya Nair",
       "action": "Login",
       "details": "Successful login as Teacher",
-      "timestamp": "2026-06-27T05:00:58.231Z"
+      "timestamp": "2026-06-30T03:44:25.107Z"
     },
     {
-      "id": "act-89f3a0d5-3195-4371-a573-ac976ad3c084",
-      "userId": "usr-teacher1",
-      "userName": "Priya Nair",
+      "id": "act-e96e219f-ad80-49c3-8ba9-a0519ace4b72",
+      "userId": "usr-admin",
+      "userName": "Shalini Sen",
+      "action": "Login",
+      "details": "Successful login as Super Admin",
+      "timestamp": "2026-06-30T03:42:52.844Z"
+    },
+    {
+      "id": "act-7bd73ce3-81fe-49f9-8408-fbf9d2068b78",
+      "userId": "usr-5a44d1c2c3b2",
+      "userName": "vanditha",
       "action": "Child Enrolled",
-      "details": "Enrolled new student Rishi in Kindergarten (Prep)",
-      "timestamp": "2026-06-27T04:59:20.687Z"
+      "details": "Enrolled new student Keethika in Kindergarten (Prep)",
+      "timestamp": "2026-06-30T03:42:24.000Z"
     },
     {
-      "id": "act-8e74bf54-7752-4081-9856-f3a173ea08f5",
+      "id": "act-fc1d05ae-dd68-42ac-935a-49ef16e22eee",
+      "userId": "usr-5a44d1c2c3b2",
+      "userName": "vanditha",
+      "action": "Child Enrolled",
+      "details": "Enrolled new student Keethika in Kindergarten (Prep)",
+      "timestamp": "2026-06-30T03:42:23.804Z"
+    },
+    {
+      "id": "act-53298014-0ba0-4c51-a454-bc514a96e0ad",
+      "userId": "usr-5a44d1c2c3b2",
+      "userName": "vanditha",
+      "action": "Child Enrolled",
+      "details": "Enrolled new student Keethika in Kindergarten (Prep)",
+      "timestamp": "2026-06-30T03:42:18.339Z"
+    },
+    {
+      "id": "act-1b4f5f02-d61a-469b-81b4-47b3738b5a8a",
+      "userId": "usr-5a44d1c2c3b2",
+      "userName": "vanditha",
+      "action": "Child Enrolled",
+      "details": "Enrolled new student Keethika in Kindergarten (Prep)",
+      "timestamp": "2026-06-30T03:42:17.543Z"
+    },
+    {
+      "id": "act-b38c8a8a-bf29-41f5-a9e5-fa4c1c8f0a13",
+      "userId": "usr-5a44d1c2c3b2",
+      "userName": "vanditha",
+      "action": "Child Enrolled",
+      "details": "Enrolled new student Keethika in Kindergarten (Prep)",
+      "timestamp": "2026-06-30T03:42:17.330Z"
+    },
+    {
+      "id": "act-58392e47-bc23-46da-b109-74256b4f000c",
+      "userId": "usr-5a44d1c2c3b2",
+      "userName": "vanditha",
+      "action": "Child Enrolled",
+      "details": "Enrolled new student Keethika in Kindergarten (Prep)",
+      "timestamp": "2026-06-30T03:42:17.068Z"
+    },
+    {
+      "id": "act-a5600a61-435f-4687-9216-fb4119f75331",
+      "userId": "usr-5a44d1c2c3b2",
+      "userName": "vanditha",
+      "action": "Child Enrolled",
+      "details": "Enrolled new student Keethika in Kindergarten (Prep)",
+      "timestamp": "2026-06-30T03:42:14.343Z"
+    },
+    {
+      "id": "act-a9f7162b-d933-4373-8c74-c40060972c9f",
       "userId": "usr-teacher1",
       "userName": "Priya Nair",
       "action": "Login",
       "details": "Successful login as Teacher",
-      "timestamp": "2026-06-27T04:57:30.173Z"
+      "timestamp": "2026-06-30T03:40:13.086Z"
     },
     {
-      "id": "act-88288f00-7a34-4537-8a65-58c1d635ebc6",
+      "id": "act-6540bc59-ce7f-4c21-8b68-a885455f815a",
       "userId": "usr-admin",
       "userName": "Shalini Sen",
       "action": "Login",
       "details": "Successful login as Super Admin",
-      "timestamp": "2026-06-27T04:57:13.821Z"
+      "timestamp": "2026-06-30T03:39:11.779Z"
     },
     {
-      "id": "act-42048b00-cc62-409e-b496-c96aa262e336",
-      "userId": "usr-parent",
-      "userName": "Rajesh Sharma",
+      "id": "act-e0d1c085-c8ab-46f2-838d-9544083f1702",
+      "action": "AI Report Generated",
+      "userId": "usr-admin",
+      "details": "Generated standard intelligence development profile for sai",
+      "userName": "Shalini Sen",
+      "timestamp": "2026-06-29T20:53:38.459Z"
+    },
+    {
+      "id": "act-ffd58c93-42d1-4890-9b5a-09bef9dee875",
+      "action": "Observation Created",
+      "userId": "usr-admin",
+      "details": "Created Motor Skills observation for sai",
+      "userName": "Shalini Sen",
+      "timestamp": "2026-06-29T20:52:24.504Z"
+    },
+    {
+      "id": "act-9d50abad-109d-4d40-b139-b5dbf288d67c",
+      "action": "Child Enrolled",
+      "userId": "usr-admin",
+      "details": "Enrolled new student sai in Nursery",
+      "userName": "Shalini Sen",
+      "timestamp": "2026-06-29T20:51:09.484Z"
+    },
+    {
+      "id": "act-80427d5e-195b-4b3c-8d79-4010bf49de79",
       "action": "Login",
+      "userId": "usr-admin",
+      "details": "Successful login as Super Admin",
+      "userName": "Shalini Sen",
+      "timestamp": "2026-06-29T20:49:17.516Z"
+    },
+    {
+      "id": "act-eb0683ca-cf4d-49e4-8a0d-af9e79cf5f5f",
+      "action": "Login",
+      "userId": "usr-admin",
+      "details": "Successful login as Super Admin",
+      "userName": "Shalini Sen",
+      "timestamp": "2026-06-29T20:21:31.149Z"
+    },
+    {
+      "id": "act-ce15d113-bb8c-4b65-9afe-ed89ec68c5a2",
+      "action": "Login",
+      "userId": "usr-d4de2b985b3a",
       "details": "Successful login as Parent",
-      "timestamp": "2026-06-27T04:49:29.656Z"
+      "userName": "sumalatha",
+      "timestamp": "2026-06-29T20:19:33.237Z"
     },
     {
-      "id": "act-54c636bd-f499-4829-a244-868a30a9abd9",
-      "userId": "usr-teacher1",
-      "userName": "Priya Nair",
+      "id": "act-0b738236-e320-4e7b-8af3-9483fa91e530",
+      "action": "AI Report Generated",
+      "userId": "usr-829af6365aaa",
+      "details": "Generated standard intelligence development profile for priyanka",
+      "userName": "Akshaya kumari",
+      "timestamp": "2026-06-29T20:17:30.958Z"
+    },
+    {
+      "id": "act-2e05d174-30d8-4edc-8d19-80592947ab4b",
+      "action": "Observation Created",
+      "userId": "usr-829af6365aaa",
+      "details": "Created Social observation for priyanka",
+      "userName": "Akshaya kumari",
+      "timestamp": "2026-06-29T20:16:48.463Z"
+    },
+    {
+      "id": "act-ddb7f723-4e01-4d8b-a9fb-06ef3aa078d5",
       "action": "Login",
-      "details": "Successful login as Teacher",
-      "timestamp": "2026-06-26T20:36:38.151Z"
-    },
-    {
-      "id": "act-16f325f8-98b8-4034-9632-6177d3d7d13a",
       "userId": "usr-teacher1",
-      "userName": "Priya Nair",
-      "action": "Login",
       "details": "Successful login as Teacher",
-      "timestamp": "2026-06-26T20:36:30.957Z"
+      "userName": "Priya Nair",
+      "timestamp": "2026-06-29T20:16:13.948Z"
     },
     {
-      "id": "act-14f29c5c-b576-4271-bb09-8ab398c473ec",
+      "id": "act-9b7a1b68-b6d2-40c6-90d4-2de8a88b6b2d",
+      "action": "Login",
+      "userId": "usr-d4de2b985b3a",
+      "details": "Successful login as Parent",
+      "userName": "sumalatha",
+      "timestamp": "2026-06-29T20:15:32.629Z"
+    },
+    {
+      "id": "act-7e8be345-afad-426a-8e81-3a7ae3a934a3",
+      "action": "Register",
+      "userId": "usr-5a44d1c2c3b2",
+      "details": "New teacher registered: vanditha (vanditha@gmail.com) for classroom cls-nursery.",
+      "userName": "vanditha",
+      "timestamp": "2026-06-29T20:14:02.955Z"
+    },
+    {
+      "id": "act-0099ceeb-2e16-4269-b115-57da902bafb2",
+      "action": "Login",
       "userId": "usr-admin",
-      "userName": "Shalini Sen",
-      "action": "Login",
       "details": "Successful login as Super Admin",
-      "timestamp": "2026-06-26T20:16:59.903Z"
+      "userName": "Shalini Sen",
+      "timestamp": "2026-06-29T19:55:47.654Z"
+    },
+    {
+      "id": "act-c81ec4a0-76b0-4ddb-958e-0f0dfc4c9380",
+      "action": "Observation Created",
+      "userId": "usr-9fe9cf955f5e",
+      "details": "Created Communication observation for priyanka",
+      "userName": "Shiva Ram",
+      "timestamp": "2026-06-29T19:44:31.524Z"
+    },
+    {
+      "id": "act-94c9286d-bbf4-480b-b871-a4f706687190",
+      "action": "Login",
+      "userId": "usr-teacher1",
+      "details": "Successful login as Teacher",
+      "userName": "Priya Nair",
+      "timestamp": "2026-06-29T19:43:44.233Z"
+    },
+    {
+      "id": "act-61027a80-64b6-486b-a795-b6534257b185",
+      "action": "Child Linked",
+      "userId": "usr-d4de2b985b3a",
+      "details": "Linked parent account sumalatha to student priyanka",
+      "userName": "sumalatha",
+      "timestamp": "2026-06-29T19:43:01.767Z"
+    },
+    {
+      "id": "act-eedbdf4a-0958-475b-85c3-07d2646f0610",
+      "action": "Register",
+      "userId": "usr-d4de2b985b3a",
+      "details": "New parent registered: sumalatha (suma@gmail.com). Linked to 1 students.",
+      "userName": "sumalatha",
+      "timestamp": "2026-06-29T19:42:42.607Z"
+    },
+    {
+      "id": "act-15c745a1-1aee-4bd9-a101-63a0e5fa579d",
+      "action": "Child Enrolled",
+      "userId": "usr-9fe9cf955f5e",
+      "details": "Enrolled new student priyanka in Nursery",
+      "userName": "Shiva Ram",
+      "timestamp": "2026-06-29T19:41:56.412Z"
+    },
+    {
+      "id": "act-4514bca4-7bf7-4f33-a123-fbb5c20980f9",
+      "action": "Login",
+      "userId": "usr-teacher1",
+      "details": "Successful login as Teacher",
+      "userName": "Priya Nair",
+      "timestamp": "2026-06-29T19:40:57.827Z"
     },
     {
       "id": "log-1",
-      "userId": "usr-teacher1",
-      "userName": "Priya Nair",
       "action": "Observation Created",
+      "userId": "usr-teacher1",
       "details": "Logged Social skills observation for Riya Sharma.",
-      "timestamp": "2026-06-26T20:15:24.084Z"
+      "userName": "Priya Nair",
+      "timestamp": "2026-06-29T19:40:48.520Z"
     },
     {
       "id": "log-2",
-      "userId": "usr-teacher1",
-      "userName": "Priya Nair",
       "action": "AI Report Generated",
+      "userId": "usr-teacher1",
       "details": "Triggered Gemini intelligence model for observation obs-1.",
-      "timestamp": "2026-06-26T20:15:14.084Z"
+      "userName": "Priya Nair",
+      "timestamp": "2026-06-29T19:40:38.520Z"
     }
   ],
-  "settings": {
-    "schoolName": "FirstCry Intellitots, Koramangala",
-    "logoUrl": "https://images.unsplash.com/photo-1595152772835-219674b2a8a6?w=100",
-    "theme": "light",
-    "smtpHost": "smtp.firstcry.com",
-    "smtpPort": 587,
-    "smtpUser": "notifications@firstcryintellitots.com",
-    "backupInterval": "Daily"
-  }
+  "observations": [
+    {
+      "id": "obs-1",
+      "date": "2026-06-29",
+      "note": "Riya shared toys with friends and participated actively in group activities.",
+      "status": "Analyzed",
+      "childId": "ch-riya",
+      "category": "Social",
+      "childName": "Riya Sharma",
+      "riskLevel": "Low",
+      "teacherId": "usr-teacher1",
+      "teacherName": "Priya Nair",
+      "classroomName": "Toddlers (Playgroup)"
+    },
+    {
+      "id": "obs-2",
+      "date": "2026-06-28",
+      "note": "Riya struggled to articulate her request during lunch, resorting to pointing and crying when not immediately understood.",
+      "status": "Analyzed",
+      "childId": "ch-riya",
+      "category": "Communication",
+      "childName": "Riya Sharma",
+      "riskLevel": "Medium",
+      "teacherId": "usr-teacher1",
+      "teacherName": "Priya Nair",
+      "classroomName": "Toddlers (Playgroup)"
+    },
+    {
+      "id": "obs-3",
+      "date": "2026-06-29",
+      "note": "Aarav showed excellent patience during the blocks game. He waited for his turn and helped clean up the space afterward.",
+      "status": "Pending",
+      "childId": "ch-aarav",
+      "category": "Behaviour",
+      "childName": "Aarav Patel",
+      "riskLevel": "Low",
+      "teacherId": "usr-teacher1",
+      "teacherName": "Priya Nair",
+      "classroomName": "Toddlers (Playgroup)"
+    },
+    {
+      "id": "obs-4",
+      "date": "2026-06-28",
+      "note": "Kabir showed brilliant interest in our space theme activity, naming multiple planets and asking curious questions about gravity.",
+      "status": "Pending",
+      "childId": "ch-kabir",
+      "category": "Learning",
+      "childName": "Kabir Malhotra",
+      "riskLevel": "Low",
+      "teacherId": "usr-teacher2",
+      "teacherName": "Sneha Rao",
+      "classroomName": "Kindergarten (Prep)"
+    },
+    {
+      "id": "obs-b579f53defea",
+      "date": "2026-06-29",
+      "note": "priyanka eat apple in this class",
+      "status": "Analyzed",
+      "childId": "ch-abf24c93480b",
+      "category": "Communication",
+      "childName": "priyanka",
+      "riskLevel": "Medium",
+      "teacherId": "usr-9fe9cf955f5e",
+      "teacherName": "Shiva Ram",
+      "classroomName": "Nursery"
+    },
+    {
+      "id": "obs-be3236248333",
+      "date": "2026-06-29",
+      "note": "exploring the class",
+      "status": "Pending",
+      "childId": "ch-abf24c93480b",
+      "category": "Social",
+      "childName": "priyanka",
+      "riskLevel": "Low",
+      "teacherId": "usr-829af6365aaa",
+      "teacherName": "Akshaya kumari",
+      "classroomName": "Nursery"
+    },
+    {
+      "id": "obs-6050e678b07f",
+      "date": "2026-06-29",
+      "note": "sai struggle to open the cap of bottle while drinkig",
+      "status": "Analyzed",
+      "childId": "ch-c78851aef417",
+      "category": "Motor Skills",
+      "childName": "sai",
+      "riskLevel": "High",
+      "teacherId": "usr-admin",
+      "teacherName": "Shalini Sen",
+      "classroomName": "Nursery"
+    },
+    {
+      "id": "obs-693fe04ad75e",
+      "childId": "ch-349a55d708c0",
+      "childName": "Keethika",
+      "classroomName": "Kindergarten (Prep)",
+      "category": "Creativity",
+      "note": "keethika painted a tree diagram with crayons",
+      "teacherId": "usr-5a44d1c2c3b2",
+      "teacherName": "vanditha",
+      "date": "2026-06-30",
+      "riskLevel": "Medium",
+      "status": "Analyzed"
+    }
+  ],
+  "notifications": [
+    {
+      "id": "notif-673cce0f-47ff-4382-aa71-530055aa765c",
+      "userId": "usr-5a44d1c2c3b2",
+      "title": "AI Report Generated",
+      "message": "Gemini AI prepared developmental summary for Keethika",
+      "type": "success",
+      "isRead": false,
+      "timestamp": "2026-06-30T03:46:29.865Z"
+    },
+    {
+      "id": "notif-7200d521-a281-40c3-a071-8782648a3926",
+      "userId": "usr-head",
+      "title": "Action Required: Medium Risk Observation",
+      "message": "Teacher vanditha reported a Medium risk behaviour in Keethika (Creativity)",
+      "type": "warning",
+      "isRead": false,
+      "timestamp": "2026-06-30T03:45:50.436Z"
+    },
+    {
+      "id": "notif-b64d9570-78f4-4880-9dd3-1e7df7b81fe4",
+      "userId": "usr-admin",
+      "title": "Action Required: Medium Risk Observation",
+      "message": "Teacher vanditha reported a Medium risk behaviour in Keethika (Creativity)",
+      "type": "warning",
+      "isRead": false,
+      "timestamp": "2026-06-30T03:45:50.089Z"
+    },
+    {
+      "id": "notif-0ceff2bf-ba63-4647-82dc-278355e4340c",
+      "type": "success",
+      "title": "AI Report Generated",
+      "isRead": false,
+      "userId": "usr-admin",
+      "message": "Gemini AI prepared developmental summary for sai",
+      "timestamp": "2026-06-29T20:53:38.383Z"
+    },
+    {
+      "id": "notif-cb418012-e28f-4f8d-b2f5-461f0b4db05d",
+      "type": "error",
+      "title": "Action Required: High Risk Observation",
+      "isRead": false,
+      "userId": "usr-head",
+      "message": "Teacher Shalini Sen reported a High risk behaviour in sai (Motor Skills)",
+      "timestamp": "2026-06-29T20:52:24.362Z"
+    },
+    {
+      "id": "notif-9ba0ccdb-860e-4409-b2ed-6704984ed3c5",
+      "type": "error",
+      "title": "Action Required: High Risk Observation",
+      "isRead": false,
+      "userId": "usr-admin",
+      "message": "Teacher Shalini Sen reported a High risk behaviour in sai (Motor Skills)",
+      "timestamp": "2026-06-29T20:52:24.253Z"
+    }
+  ]
 }

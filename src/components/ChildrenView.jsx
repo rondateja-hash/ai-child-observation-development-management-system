@@ -7,6 +7,7 @@ export default function ChildrenView({ user, addToast }) {
     const [children, setChildren] = useState([]);
     const [classrooms, setClassrooms] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [submitting, setSubmitting] = useState(false);
     // Filter/Search States
     const [searchQuery, setSearchQuery] = useState("");
     const [selectedClass, setSelectedClass] = useState("all");
@@ -111,6 +112,7 @@ export default function ChildrenView({ user, addToast }) {
             addToast("Validation Error", "Please fill out all required fields.", "warning");
             return;
         }
+        setSubmitting(true);
         try {
             if (editingChild) {
                 await api.updateChild(editingChild.id, formData);
@@ -121,10 +123,13 @@ export default function ChildrenView({ user, addToast }) {
                 addToast("Enrolled Successfully", "New student record generated in classroom log.", "success");
             }
             setIsAddOpen(false);
-            loadData();
+            await loadData();
         }
         catch (err) {
             addToast("Save Failed", err.message, "error");
+        }
+        finally {
+            setSubmitting(false);
         }
     };
     // Filter Logic
@@ -434,11 +439,11 @@ export default function ChildrenView({ user, addToast }) {
                 </div>
 
                 <div className="flex justify-end gap-3 pt-4 border-t border-slate-200">
-                  <button type="button" onClick={() => setIsAddOpen(false)} className="px-4 py-2 border border-slate-200 text-slate-700 font-semibold rounded-lg hover:bg-slate-50 text-xs transition-colors">
+                  <button type="button" disabled={submitting} onClick={() => setIsAddOpen(false)} className="px-4 py-2 border border-slate-200 text-slate-700 font-semibold rounded-lg hover:bg-slate-50 text-xs transition-colors disabled:opacity-50">
                     Cancel
                   </button>
-                  <button type="submit" className="px-5 py-2 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-lg text-xs transition-colors shadow-sm">
-                    {editingChild ? "Save Changes" : "Confirm Enrollment"}
+                  <button type="submit" disabled={submitting} className="px-5 py-2 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-lg text-xs transition-colors shadow-sm disabled:opacity-50 disabled:cursor-not-allowed">
+                    {submitting ? "Saving..." : (editingChild ? "Save Changes" : "Confirm Enrollment")}
                   </button>
                 </div>
               </form>

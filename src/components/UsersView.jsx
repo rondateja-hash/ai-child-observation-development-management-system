@@ -7,6 +7,7 @@ export default function UsersView({ user, addToast }) {
     const [users, setUsers] = useState([]);
     const [classrooms, setClassrooms] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [submitting, setSubmitting] = useState(false);
     // Search/Filters states
     const [searchQuery, setSearchQuery] = useState("");
     const [selectedRole, setSelectedRole] = useState("all");
@@ -94,6 +95,7 @@ export default function UsersView({ user, addToast }) {
             addToast("Validation Error", "Name and email are required fields.", "warning");
             return;
         }
+        setSubmitting(true);
         try {
             if (editingUser) {
                 // Edit User API
@@ -110,10 +112,13 @@ export default function UsersView({ user, addToast }) {
                 addToast("Staff Profile Created", "New account generated. Credentials dispatched.", "success");
             }
             setIsAddOpen(false);
-            loadData();
+            await loadData();
         }
         catch (err) {
             addToast("Save Failed", err.message, "error");
+        }
+        finally {
+            setSubmitting(false);
         }
     };
     // Filter list
@@ -311,12 +316,12 @@ export default function UsersView({ user, addToast }) {
                 </div>
 
                 <div className="flex justify-end gap-3 pt-6 border-t border-slate-200">
-                  <button type="button" onClick={() => setIsAddOpen(false)} className="px-4 py-2 border border-slate-200 text-slate-700 font-semibold rounded-lg hover:bg-slate-50 text-xs transition-colors">
+                  <button type="button" disabled={submitting} onClick={() => setIsAddOpen(false)} className="px-4 py-2 border border-slate-200 text-slate-700 font-semibold rounded-lg hover:bg-slate-50 text-xs transition-colors disabled:opacity-50">
                     Cancel
                   </button>
-                  <button type="submit" className="px-5 py-2 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-lg text-xs transition-colors shadow-sm flex items-center gap-1.5">
-                    <Sparkles className="h-3.5 w-3.5"/>
-                    <span>{editingUser ? "Save Changes" : "Create Account"}</span>
+                  <button type="submit" disabled={submitting} className="px-5 py-2 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-lg text-xs transition-colors shadow-sm flex items-center gap-1.5 disabled:opacity-50 disabled:cursor-not-allowed">
+                    {submitting ? (<div className="h-4 w-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>) : (<Sparkles className="h-3.5 w-3.5"/>)}
+                    <span>{submitting ? "Saving..." : (editingUser ? "Save Changes" : "Create Account")}</span>
                   </button>
                 </div>
               </form>

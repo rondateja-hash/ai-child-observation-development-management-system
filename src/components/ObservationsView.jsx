@@ -331,10 +331,10 @@ export default function ObservationsView({ user, addToast, setActiveTab, setSele
                 </div>
 
                 <div className="flex justify-end gap-3 pt-4 border-t border-slate-200">
-                  <button type="button" onClick={() => setIsAddOpen(false)} className="px-4 py-2 border border-slate-200 text-slate-700 font-semibold rounded-lg hover:bg-slate-50 text-xs transition-colors">
+                  <button type="button" disabled={submitting} onClick={() => setIsAddOpen(false)} className="px-4 py-2 border border-slate-200 text-slate-700 font-semibold rounded-lg hover:bg-slate-50 text-xs transition-colors disabled:opacity-50">
                     Cancel
                   </button>
-                  <button type="submit" disabled={submitting} className="px-5 py-2 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-lg text-xs transition-colors shadow-sm flex items-center gap-1.5">
+                  <button type="submit" disabled={submitting} className="px-5 py-2 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-lg text-xs transition-colors shadow-sm flex items-center gap-1.5 disabled:opacity-50 disabled:cursor-not-allowed">
                     {submitting ? (<div className="h-4 w-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>) : ("Save Observation")}
                   </button>
                 </div>
